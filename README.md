@@ -15,11 +15,3 @@ Prevents overlapping for artisan console commands.
     ```shell
     composer require laramind/laravel-console-overlapping
     ```
-
-2. Add `ServiceProvider` to `config/app.php`:
-    ```php
-    'providers' => [
-        // ...
-        Laramind\LaravelConsoleOverlapping\ServiceProvider::class,
-    ],
-    ```
