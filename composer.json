@@ -1,0 +1,20 @@
+{
+    "name": "dmitry-ivanov/laravel-console-overlapping",
+    "description": "Prevents Laravel console commands overlapping",
+    "keywords": ["laravel", "console", "overlapping", "command", "schedule"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Ivanov",
+            "email": "dmitry.g.ivanov@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "DmitryIvanov\\LaravelConsoleOverlapping\\": "src/"
+        }
+    }
+}
