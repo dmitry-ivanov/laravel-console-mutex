@@ -8,7 +8,7 @@ Prevents overlapping for artisan console commands.
 
 ## Installation
 
-1. Add package using `composer`:
+1. Install package through `composer`:
     ```shell
     composer require dmitry-ivanov/laravel-console-overlapping
     ```
