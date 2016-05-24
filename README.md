@@ -13,7 +13,7 @@ Prevents overlapping for artisan console commands.
 
 1. Install package through `composer`:
     ```shell
-    composer require dmitry-ivanov/laravel-console-overlapping
+    composer require laramind/laravel-console-overlapping
     ```
 
 2. Add `ServiceProvider` to `config/app.php`:
