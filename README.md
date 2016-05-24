@@ -1,5 +1,7 @@
 # Laravel console commands overlapping
 
+[![StyleCI](https://styleci.io/repos/59570052/shield)](https://styleci.io/repos/59570052)
+
 Prevents overlapping for artisan console commands.
 
 ## Dependencies
