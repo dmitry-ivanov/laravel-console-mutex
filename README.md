@@ -20,6 +20,6 @@ Prevents overlapping for artisan console commands.
     ```php
     'providers' => [
         // ...
-        DmitryIvanov\LaravelConsoleOverlapping\ServiceProvider::class,
+        Laramind\LaravelConsoleOverlapping\ServiceProvider::class,
     ],
     ```
