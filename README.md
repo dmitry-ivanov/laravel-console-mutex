@@ -9,9 +9,11 @@ Prevents overlapping for artisan console commands.
 - `PHP >=7.0.0`
 - `Laravel >=5.2`
 
-## Installation
+## Usage
 
 1. Install package through `composer`:
     ```shell
     composer require laramind/laravel-console-overlapping
     ```
+
+2. In progress...
