@@ -1,2 +1,3 @@
-# laravel-console-overlapping
-Prevents Laravel console commands overlapping
+# Laravel console commands overlapping
+
+Prevents scheduled console commands overlapping with manual calls.
