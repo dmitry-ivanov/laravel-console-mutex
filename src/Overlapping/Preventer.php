@@ -6,8 +6,17 @@ class Preventer
 {
     private $strategy;
 
-    public function __construct(Strategy $strategy)
+    public function __construct($strategy)
     {
-        $this->strategy = $strategy;
+        switch ($strategy) {
+            case 'database':
+                $this->strategy = new DatabaseStrategy();
+                break;
+
+            case 'file':
+            default:
+                $this->strategy = new FileStrategy();
+                break;
+        }
     }
 }
