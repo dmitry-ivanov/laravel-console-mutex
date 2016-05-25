@@ -1,5 +1,5 @@
 {
-    "name": "laramind/laravel-console-overlapping",
+    "name": "illuminated/console-overlapping",
     "description": "Prevents Laravel console commands overlapping",
     "keywords": ["laravel", "console", "overlapping", "command", "locker", "schedule"],
     "license": "MIT",
@@ -10,12 +10,11 @@
         }
     ],
     "require": {
-        "php": ">=7.0.0",
-        "illuminate/support": "^5.2"
+        "php": ">=7.0.0"
     },
     "autoload": {
         "psr-4": {
-            "Laramind\\LaravelConsoleOverlapping\\": "src/"
+            "Illuminated\\Console\\Overlapping\\": "src/"
         }
     }
 }

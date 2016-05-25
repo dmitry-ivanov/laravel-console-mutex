@@ -1,6 +1,6 @@
 <?php
 
-namespace Laramind\LaravelConsoleOverlapping;
+namespace Illuminated\Console\Overlapping;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {

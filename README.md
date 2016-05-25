@@ -13,7 +13,7 @@ Prevents overlapping for artisan console commands.
 
 1. Install package through `composer`:
     ```shell
-    composer require laramind/laravel-console-overlapping
+    composer require illuminated/console-overlapping
     ```
 
-2. In progress...
+2. Package development in progress.
