@@ -10,8 +10,7 @@ trait WithoutOverlapping
 {
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $strategy = $this->getOverlappingStrategy();
-        $preventer = new Preventer($strategy);
+        $preventer = new Preventer($this);
 
         return parent::execute($input, $output);
     }
