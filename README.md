@@ -18,8 +18,6 @@ Prevents overlapping for artisan console commands.
 
 2. Use `Illuminated\Console\WithoutOverlapping` trait in your console command class:
     ```php
-    <?php
-    
     namespace App\Console\Commands;
     
     use Illuminate\Console\Command;
@@ -37,5 +35,4 @@ Prevents overlapping for artisan console commands.
             $this->info('Foo! Bar! Baz!');
         }
     }
-
     ```
