@@ -16,4 +16,26 @@ Prevents overlapping for artisan console commands.
     composer require illuminated/console-overlapping
     ```
 
-2. Package development in progress.
+2. Use `Illuminated\Console\WithoutOverlapping` trait in your console command class:
+    ```php
+    <?php
+    
+    namespace App\Console\Commands;
+    
+    use Illuminate\Console\Command;
+    use Illuminated\Console\WithoutOverlapping;
+    
+    class Foo extends Command
+    {
+        use WithoutOverlapping;
+    
+        protected $signature = 'foo';
+        protected $description = 'Some dummy command';
+    
+        public function handle()
+        {
+            $this->info('Foo! Bar! Baz!');
+        }
+    }
+
+    ```
