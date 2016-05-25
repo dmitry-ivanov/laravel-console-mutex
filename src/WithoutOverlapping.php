@@ -14,8 +14,13 @@ trait WithoutOverlapping
         return parent::execute($input, $output);
     }
 
-    private function getOverlappingStrategy()
+    public function getOverlappingStrategy()
     {
         return (isset($this->overlappingStrategy) ? $this->overlappingStrategy : 'file');
+    }
+
+    public function setOverlappingStrategy($strategy)
+    {
+        $this->overlappingStrategy = $strategy;
     }
 }
