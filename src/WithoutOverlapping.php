@@ -9,8 +9,13 @@ trait WithoutOverlapping
 {
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        var_dump('overlapping check here');
+        $strategy = $this->getOverlappingStrategy();
 
         return parent::execute($input, $output);
+    }
+
+    private function getOverlappingStrategy()
+    {
+        return (isset($this->overlappingStrategy) ? $this->overlappingStrategy : 'file');
     }
 }
