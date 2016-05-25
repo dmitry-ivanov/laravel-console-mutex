@@ -36,3 +36,9 @@ Prevents overlapping for artisan console commands.
         }
     }
     ```
+
+## Strategies
+
+Overlapping can be prevented by various strategies. Strategy should be chosen according to your context.
+If your application is deployed on a single server, then `file` strategy is okay for you. This is default.
+But if your application is deployed on a several nodes, and each node can run artisan commands, then you should use `database` strategy.
