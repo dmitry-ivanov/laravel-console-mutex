@@ -42,3 +42,57 @@ Prevents overlapping for artisan console commands.
 Overlapping can be prevented by various strategies. `file` by default, strategy should be chosen according to your context.
 If your application is deployed on a single server, then using defaults is okay. Just use trait, and that's it.
 But if your application is deployed on a several nodes, which can run artisan commands, then you should use `database` strategy.
+
+You can change strategy in your console command class, by specifying `$overlappingStrategy` field:
+
+```php
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+use Illuminated\Console\WithoutOverlapping;
+
+class Foo extends Command
+{
+    use WithoutOverlapping;
+
+    protected $signature = 'foo';
+    protected $description = 'Some dummy command';
+    protected $overlappingStrategy = 'database';
+
+    public function handle()
+    {
+        $this->info('Foo! Bar! Baz!');
+    }
+}
+
+```
+
+Or by using `setOverlappingStrategy()` method:
+
+```php
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+use Illuminated\Console\WithoutOverlapping;
+
+class Foo extends Command
+{
+    use WithoutOverlapping;
+
+    protected $signature = 'foo';
+    protected $description = 'Some dummy command';
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $strategy = config('foo.overlapping');
+        $this->setOverlappingStrategy($strategy);
+    }
+
+    public function handle()
+    {
+        $this->info('Foo! Bar! Baz!');
+    }
+}
+```
