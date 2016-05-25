@@ -10,6 +10,16 @@ trait WithoutOverlapping
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $strategy = $this->getOverlappingStrategy();
+        switch ($strategy) {
+            case 'database':
+                //
+                break;
+
+            case 'file':
+            default:
+                //
+                break;
+        }
 
         return parent::execute($input, $output);
     }
