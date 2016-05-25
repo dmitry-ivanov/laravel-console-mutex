@@ -46,23 +46,15 @@ But if your application is deployed on a several nodes, which can run artisan co
 You can change strategy in your console command class, by specifying `$overlappingStrategy` field:
 
 ```php
-namespace App\Console\Commands;
-
-use Illuminate\Console\Command;
-use Illuminated\Console\WithoutOverlapping;
-
 class Foo extends Command
 {
     use WithoutOverlapping;
 
-    protected $signature = 'foo';
-    protected $description = 'Some dummy command';
+    // ...
+
     protected $overlappingStrategy = 'database';
 
-    public function handle()
-    {
-        $this->info('Foo! Bar! Baz!');
-    }
+    // ...
 }
 
 ```
@@ -70,17 +62,11 @@ class Foo extends Command
 Or by using `setOverlappingStrategy()` method:
 
 ```php
-namespace App\Console\Commands;
-
-use Illuminate\Console\Command;
-use Illuminated\Console\WithoutOverlapping;
-
 class Foo extends Command
 {
     use WithoutOverlapping;
 
-    protected $signature = 'foo';
-    protected $description = 'Some dummy command';
+    // ...
 
     public function __construct()
     {
@@ -90,9 +76,6 @@ class Foo extends Command
         $this->setOverlappingStrategy($strategy);
     }
 
-    public function handle()
-    {
-        $this->info('Foo! Bar! Baz!');
-    }
+    // ...
 }
 ```
