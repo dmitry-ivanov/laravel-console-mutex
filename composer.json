@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Illuminated\\Console\\Overlapping\\": "src/"
+            "Illuminated\\Console\\": "src/"
         }
     }
 }
