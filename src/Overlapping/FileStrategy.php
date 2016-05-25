@@ -2,6 +2,6 @@
 
 namespace Illuminated\Console\Overlapping;
 
-class FileStrategy implements Strategy
+class FileStrategy implements StrategyInterface
 {
 }

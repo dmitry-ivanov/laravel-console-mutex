@@ -2,6 +2,6 @@
 
 namespace Illuminated\Console\Overlapping;
 
-interface Strategy
+interface StrategyInterface
 {
 }

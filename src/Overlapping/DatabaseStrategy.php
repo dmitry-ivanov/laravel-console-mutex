@@ -2,6 +2,6 @@
 
 namespace Illuminated\Console\Overlapping;
 
-class DatabaseStrategy implements Strategy
+class DatabaseStrategy implements StrategyInterface
 {
 }
