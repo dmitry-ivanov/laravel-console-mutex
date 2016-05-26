@@ -10,8 +10,15 @@ trait WithoutOverlapping
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $mutex = new Mutex($this);
+        if (!$mutex->acquireLock(0)) {
+            $this->info('Command already running!');
+            return;
+        }
 
-        return parent::execute($input, $output);
+        $code = parent::execute($input, $output);
+        $mutex->releaseLock();
+
+        return $code;
     }
 
     public function getMutexStrategy()
