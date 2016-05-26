@@ -11,7 +11,8 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "illuminate/console": "^5.2"
+        "illuminate/console": "^5.2",
+        "arvenil/ninja-mutex": "^0.5.1"
     },
     "autoload": {
         "psr-4": {

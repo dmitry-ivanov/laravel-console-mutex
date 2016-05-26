@@ -4,9 +4,71 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2cb1a77a6e483cbcbd5a4b6494be0762",
-    "content-hash": "62ef7715a74cc79a4909653edb03a603",
+    "hash": "237b5407dead56b904a7212beff320c2",
+    "content-hash": "bfe5403d2d17f8c0f1c029d1e4ddb700",
     "packages": [
+        {
+            "name": "arvenil/ninja-mutex",
+            "version": "0.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arvenil/ninja-mutex.git",
+                "reference": "9726729fe27ff02acd9887e85c150d353a073a2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arvenil/ninja-mutex/zipball/9726729fe27ff02acd9887e85c150d353a073a2e",
+                "reference": "9726729fe27ff02acd9887e85c150d353a073a2e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "0.1.*",
+                "ext-memcache": "*",
+                "ext-memcached": "*",
+                "ext-pdo_mysql": "*",
+                "mikey179/vfsstream": "1.4.* || 1.5.*",
+                "predis/predis": "1.0.*",
+                "scrutinizer/ocular": "1.1.*"
+            },
+            "suggest": {
+                "ext-memcache": "Create mutex using memcache extension",
+                "ext-memcached": "Create mutex using memcached extension",
+                "ext-pdo_mysql": "Create mutex using MySql",
+                "predis/predis": "Create mutex using Predis (client library for Redis)"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "NinjaMutex": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kamil Dziedzic",
+                    "email": "arvenil@klecza.pl"
+                }
+            ],
+            "description": "Simple to use mutex implementation that can use flock, memcache, memcached, mysql or redis for locking",
+            "homepage": "https://github.com/arvenil/ninja-mutex",
+            "keywords": [
+                "flock",
+                "lock",
+                "locking",
+                "memcache",
+                "memcached",
+                "mutex",
+                "mysql",
+                "redis"
+            ],
+            "time": "2015-09-10 15:12:42"
+        },
         {
             "name": "doctrine/inflector",
             "version": "v1.1.0",
