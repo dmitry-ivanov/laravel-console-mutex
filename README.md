@@ -44,7 +44,7 @@ Overlapping can be prevented by various strategies:
 Default `file` strategy is fine for a small applications, which are deployed on a single server.
 If your application is more complex and, for example, is deployed on a several nodes, then you probably would like to use some other mutex strategy.
 
-You can change mutex strategy for your console command by specifying `$mutexStrategy` field:
+You can change mutex strategy by specifying `$mutexStrategy` field:
 
 ```php
 class Foo extends Command
