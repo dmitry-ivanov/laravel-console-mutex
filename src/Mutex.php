@@ -21,13 +21,13 @@ class Mutex
             return $this->strategy;
         }
 
-        switch ($this->command->getOverlappingStrategy()) {
-            case 'database':
-                return new DatabaseStrategy();
+        switch ($this->command->getMutexStrategy()) {
+            case 'mysql':
+                break;
 
             case 'file':
             default:
-                return new FileStrategy();
+                break;
         }
     }
 }
