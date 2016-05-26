@@ -4,7 +4,7 @@ namespace Illuminated\Console\Overlapping;
 
 use Illuminate\Console\Command;
 
-class Preventer
+class Mutex
 {
     private $command;
     private $strategy;
