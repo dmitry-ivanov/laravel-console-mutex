@@ -1,6 +1,6 @@
 {
     "name": "illuminated/console-mutex",
-    "description": "Prevents Laravel console commands overlapping",
+    "description": "Prevents overlapping for Laravel console commands.",
     "keywords": ["laravel", "console", "command", "mutex", "overlapping", "locker"],
     "license": "MIT",
     "authors": [
