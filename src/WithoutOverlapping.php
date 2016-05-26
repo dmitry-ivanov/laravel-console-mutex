@@ -14,13 +14,13 @@ trait WithoutOverlapping
         return parent::execute($input, $output);
     }
 
-    public function getOverlappingStrategy()
+    public function getMutexStrategy()
     {
-        return (isset($this->overlappingStrategy) ? $this->overlappingStrategy : 'file');
+        return (isset($this->mutexStrategy) ? $this->mutexStrategy : 'file');
     }
 
-    public function setOverlappingStrategy($strategy)
+    public function setMutexStrategy($strategy)
     {
-        $this->overlappingStrategy = $strategy;
+        $this->mutexStrategy = $strategy;
     }
 }
