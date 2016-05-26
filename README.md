@@ -28,11 +28,11 @@ Prevents overlapping for artisan console commands.
         use WithoutOverlapping;
     
         protected $signature = 'foo';
-        protected $description = 'Some dummy command';
+        protected $description = 'Some dummy Foo command';
     
         public function handle()
         {
-            $this->info('Foo! Bar! Baz!');
+            $this->info('Foo!');
         }
     }
     ```
