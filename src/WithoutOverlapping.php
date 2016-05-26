@@ -2,7 +2,6 @@
 
 namespace Illuminated\Console;
 
-use Illuminated\Console\Overlapping\Mutex;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminated\Console\Overlapping;
+namespace Illuminated\Console;
 
 use Illuminate\Console\Command;
 
