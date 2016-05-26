@@ -2,7 +2,7 @@
 
 namespace Illuminated\Console;
 
-use Illuminated\Console\Overlapping\Preventer;
+use Illuminated\Console\Overlapping\Mutex;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -10,7 +10,7 @@ trait WithoutOverlapping
 {
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $preventer = new Preventer($this);
+        $mutex = new Mutex($this);
 
         return parent::execute($input, $output);
     }
