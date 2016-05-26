@@ -26,14 +26,8 @@ Prevents overlapping for artisan console commands.
     class Foo extends Command
     {
         use WithoutOverlapping;
-    
-        protected $signature = 'foo';
-        protected $description = 'Some dummy Foo command';
-    
-        public function handle()
-        {
-            $this->info('Foo!');
-        }
+
+        // ...
     }
     ```
 
