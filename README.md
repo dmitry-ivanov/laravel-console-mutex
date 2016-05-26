@@ -19,10 +19,10 @@ Prevents overlapping for artisan console commands.
 2. Use `Illuminated\Console\WithoutOverlapping` trait in your console command class:
     ```php
     namespace App\Console\Commands;
-    
+
     use Illuminate\Console\Command;
     use Illuminated\Console\WithoutOverlapping;
-    
+
     class Foo extends Command
     {
         use WithoutOverlapping;
@@ -55,4 +55,23 @@ class Foo extends Command
 
     // ...
 }
+```
+
+Or by using `setMutexStrategy()` method:
+
+```php
+class Foo extends Command
+{
+    use WithoutOverlapping;
+
+    public function __construct()
+    {
+        parent::__construct();
+    
+        $this->setMutexStrategy('mysql');
+    }
+
+    // ...
+}
+
 ```
