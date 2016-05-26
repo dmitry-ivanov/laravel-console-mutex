@@ -41,5 +41,5 @@ Overlapping can be prevented by various strategies:
 - `memcache`
 - `memcached`
 
-File strategy is fine for a small applications, which are deployed on a single server.
+Default `file` strategy is fine for a small applications, which are deployed on a single server.
 If your application is more complex and for example, is deployed on a several nodes, then you probably would like to use some other mutex strategy.
