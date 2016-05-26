@@ -6,7 +6,7 @@
 Prevents overlapping for artisan console commands.
 
 ## Dependencies
-- `PHP >=7.0.0`
+- `PHP >=5.4.0`
 - `Laravel >=5.2`
 
 ## Usage
