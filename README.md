@@ -13,7 +13,7 @@ Prevents overlapping for artisan console commands.
 
 1. Install package through `composer`:
     ```shell
-    composer require illuminated/console-overlapping
+    composer require illuminated/console-mutex
     ```
 
 2. Use `Illuminated\Console\WithoutOverlapping` trait in your console command class:
