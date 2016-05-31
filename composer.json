@@ -15,7 +15,7 @@
         "arvenil/ninja-mutex": "^0.5.1"
     },
     "suggest" : {
-        "predis/predis": "Required if you want to use `redis` strategy."
+        "predis/predis": "If you want to use `redis` strategy."
     },
     "autoload": {
         "psr-4": {
