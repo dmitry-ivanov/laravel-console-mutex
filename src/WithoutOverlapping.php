@@ -11,7 +11,7 @@ trait WithoutOverlapping
     {
         $mutex = new Mutex($this);
         if (!$mutex->acquireLock(0)) {
-            $this->info('Command already running!');
+            $this->info('Command is running now!');
             return;
         }
 
