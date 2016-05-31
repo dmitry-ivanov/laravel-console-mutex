@@ -7,6 +7,23 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 trait WithoutOverlapping
 {
+    public function getMutexStrategy()
+    {
+        return (isset($this->mutexStrategy) ? $this->mutexStrategy : 'file');
+    }
+
+    public function setMutexStrategy($strategy)
+    {
+        $this->mutexStrategy = $strategy;
+    }
+
+    public function getMutexName()
+    {
+        $name = $this->getName();
+        $arguments = json_encode($this->argument());
+        return "icmutex-{$name}-" . md5($arguments);
+    }
+
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $mutex = new Mutex($this);
@@ -19,15 +36,5 @@ trait WithoutOverlapping
         $mutex->releaseLock();
 
         return $code;
-    }
-
-    public function getMutexStrategy()
-    {
-        return (isset($this->mutexStrategy) ? $this->mutexStrategy : 'file');
-    }
-
-    public function setMutexStrategy($strategy)
-    {
-        $this->mutexStrategy = $strategy;
     }
 }
