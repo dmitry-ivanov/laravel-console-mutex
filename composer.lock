@@ -501,16 +501,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v3.0.6",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "f7a07af51ea067745a521dab1e3152044a2fb1f2"
+                "reference": "0e67031c9ef0ad681932d2b24f4fd0ec8a6679ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/f7a07af51ea067745a521dab1e3152044a2fb1f2",
-                "reference": "f7a07af51ea067745a521dab1e3152044a2fb1f2",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/0e67031c9ef0ad681932d2b24f4fd0ec8a6679ff",
+                "reference": "0e67031c9ef0ad681932d2b24f4fd0ec8a6679ff",
                 "shasum": ""
             },
             "require": {
@@ -534,7 +534,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -561,7 +561,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-25 01:41:20"
+            "time": "2016-05-12 18:19:29"
         }
     ],
     "packages-dev": [],
