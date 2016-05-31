@@ -38,7 +38,6 @@ Overlapping can be prevented by various strategies:
 - `file` (default)
 - `mysql`
 - `redis`
-- `memcache`
 - `memcached`
 
 Default `file` strategy is fine for a small applications, which are deployed on a single server.

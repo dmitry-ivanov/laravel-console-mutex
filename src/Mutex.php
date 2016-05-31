@@ -36,9 +36,6 @@ class Mutex
             case 'redis':
                 return new PredisRedisLock(Redis::connection());
 
-            case 'memcache':
-                throw new MutexException('Strategy `memcache` is not implemented yet.');
-
             case 'memcached':
                 throw new MutexException('Strategy `memcached` is not implemented yet.');
 
