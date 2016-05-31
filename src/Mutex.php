@@ -4,6 +4,7 @@ namespace Illuminated\Console;
 
 use Illuminate\Console\Command;
 use NinjaMutex\Lock\FlockLock;
+use NinjaMutex\Lock\MySqlLock;
 use NinjaMutex\Mutex as Ninja;
 use NinjaMutex\MutexException;
 
@@ -28,7 +29,7 @@ class Mutex
 
         switch ($this->command->getMutexStrategy()) {
             case 'mysql':
-                throw new MutexException('Strategy `mysql` is not implemented yet.');
+                return new MySqlLock(env('DB_USERNAME'), env('DB_PASSWORD'), env('DB_HOST'));
 
             case 'redis':
                 throw new MutexException('Strategy `redis` is not implemented yet.');
