@@ -31,6 +31,12 @@ Prevents overlapping for Laravel console commands.
     }
     ```
 
+3. Now, if you try to run the same command twice, you'll get:
+    ```shell
+    ➜  php artisan foo:bar baz
+    Command is running now!
+    ```
+
 ## Strategies
 
 Overlapping can be prevented by various strategies:
