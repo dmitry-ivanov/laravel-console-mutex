@@ -2,12 +2,13 @@
 
 namespace Illuminated\Console;
 
+use Cache;
 use Illuminate\Console\Command;
 use NinjaMutex\Lock\FlockLock;
+use NinjaMutex\Lock\MemcachedLock;
 use NinjaMutex\Lock\MySqlLock;
 use NinjaMutex\Lock\PredisRedisLock;
 use NinjaMutex\Mutex as Ninja;
-use NinjaMutex\MutexException;
 use Redis;
 
 class Mutex
@@ -37,7 +38,7 @@ class Mutex
                 return new PredisRedisLock(Redis::connection());
 
             case 'memcached':
-                throw new MutexException('Strategy `memcached` is not implemented yet.');
+                return new MemcachedLock(Cache::getStore()->getMemcached());
 
             case 'file':
             default:
