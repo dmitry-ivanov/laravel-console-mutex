@@ -9,11 +9,6 @@
             "email": "dmitry.g.ivanov@gmail.com"
         }
     ],
-    "autoload": {
-        "psr-4": {
-            "Illuminated\\Console\\": "src/"
-        }
-    },
     "require": {
         "php": ">=5.4.0",
         "illuminate/console": "^5.2",
@@ -21,5 +16,10 @@
     },
     "suggest" : {
         "predis/predis": "Required if you want to use `redis` strategy."
+    },
+    "autoload": {
+        "psr-4": {
+            "Illuminated\\Console\\": "src/"
+        }
     }
 }
