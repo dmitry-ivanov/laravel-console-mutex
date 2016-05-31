@@ -17,7 +17,7 @@ class Mutex
     {
         $this->command = $command;
         $this->strategy = $this->strategy();
-        $this->ninja = new Ninja('test', $this->strategy);
+        $this->ninja = new Ninja($command->getMutexName(), $this->strategy);
     }
 
     private function strategy()
@@ -41,7 +41,7 @@ class Mutex
 
             case 'file':
             default:
-                return new FlockLock(storage_path('framework'));
+                return new FlockLock(storage_path('app'));
         }
     }
 
