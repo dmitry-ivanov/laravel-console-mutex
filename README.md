@@ -62,7 +62,7 @@ class Foo extends Command
 }
 ```
 
-Or by using `setMutexStrategy()` method:
+Or by using `setMutexStrategy` method:
 
 ```php
 class Foo extends Command
