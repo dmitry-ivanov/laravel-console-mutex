@@ -80,3 +80,36 @@ class Foo extends Command
 }
 
 ```
+
+## Troubleshooting
+
+Note, that `WithoutOverlapping` trait is overriding `initialize` method:
+```php
+trait WithoutOverlapping
+{
+    protected function initialize(InputInterface $input, OutputInterface $output)
+    {
+        $this->initializeMutex();
+    }
+
+    // ...
+}
+```
+
+If your command is overriding `initialize` method too, then you should call `initializeMutex` method by yourself:
+```php
+class Foo extends Command
+{
+    use WithoutOverlapping;
+
+    protected function initialize(InputInterface $input, OutputInterface $output)
+    {
+        $this->initializeMutex();
+
+        $this->bar = $this->argument('bar');
+        $this->baz = $this->argument('baz');
+    }
+
+    // ...
+}
+```
