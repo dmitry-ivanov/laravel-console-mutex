@@ -7,6 +7,26 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 trait WithoutOverlapping
 {
+    protected function initialize(InputInterface $input, OutputInterface $output)
+    {
+        $this->initializeMutex();
+
+        parent::initialize($input, $output);
+    }
+
+    protected function initializeMutex()
+    {
+        $mutex = new Mutex($this);
+        if (!$mutex->acquireLock(0)) {
+            $this->info('Command is running now!');
+            exit();
+        }
+
+        register_shutdown_function(function () use ($mutex) {
+            $mutex->releaseLock();
+        });
+    }
+
     public function getMutexStrategy()
     {
         return (isset($this->mutexStrategy) ? $this->mutexStrategy : 'file');
@@ -22,19 +42,5 @@ trait WithoutOverlapping
         $name = $this->getName();
         $arguments = json_encode($this->argument());
         return "icmutex-{$name}-" . md5($arguments);
-    }
-
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
-        $mutex = new Mutex($this);
-        if (!$mutex->acquireLock(0)) {
-            $this->info('Command is running now!');
-            return;
-        }
-
-        $code = parent::execute($input, $output);
-        $mutex->releaseLock();
-
-        return $code;
     }
 }
