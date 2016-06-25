@@ -118,7 +118,7 @@ class Foo extends Command
 
 #### Several traits conflict?
 
-If you're using some other cool `illuminated/console-%` packages, well, you can find yourself getting "traits conflict".
+If you're using some other cool `illuminated/console-%` packages, well, then you can find yourself getting "traits conflict".
 For example, if you're trying to build [loggable command](https://packagist.org/packages/illuminated/console-logger), which is protected against overlapping:
 ```php
 class Foo extends Command
@@ -130,7 +130,7 @@ class Foo extends Command
 }
 ```
 
-You'll get fatal error here, the "traits conflict", because both of these traits are overriding `initialize` method:
+You'll get fatal error, the "traits conflict", because both of these traits are overriding `initialize` method:
 >If two traits insert a method with the same name, a fatal error is produced, if the conflict is not explicitly resolved.
 
 But don't worry, solution is very simple. Just override `initialize` method by yourself, and initialize traits in required order:
