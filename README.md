@@ -118,7 +118,7 @@ class Foo extends Command
 
 #### Several traits conflict?
 
-If you're using some other cool `illuminated/console-...` packages, well, you can find yourself getting "traits conflict".
+If you're using some other cool `illuminated/console-%` packages, well, you can find yourself getting "traits conflict".
 For example, if you're trying to build [loggable command](https://packagist.org/packages/illuminated/console-logger), which is protected against overlapping:
 ```php
 class Foo extends Command
