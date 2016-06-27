@@ -81,6 +81,25 @@ class Foo extends Command
 
 ```
 
+## Advanced
+
+Sometimes it is useful to set common mutex for a several commands. You can easily achieve this by setting them the same mutex name.
+By default, mutex name is generated based on a command's name and arguments. Override `getMutexName` method to change this:
+```php
+class Foo extends Command
+{
+    use WithoutOverlapping;
+
+    public function getMutexName()
+    {
+        $foo = $this->argument('foo');
+        return "icmutex-anything-you-need-here-{$foo}";
+    }
+
+    // ...
+}
+```
+
 ## Troubleshooting
 
 #### Trait included, but nothing happens?
