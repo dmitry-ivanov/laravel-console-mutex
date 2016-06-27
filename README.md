@@ -92,8 +92,7 @@ class Foo extends Command
 
     public function getMutexName()
     {
-        $foo = $this->argument('foo');
-        return "icmutex-anything-you-need-here-{$foo}";
+        return "icmutex-custom-name";
     }
 
     // ...
