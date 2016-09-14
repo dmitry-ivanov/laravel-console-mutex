@@ -6,7 +6,7 @@
 Prevents overlapping for Laravel console commands.
 
 ## Requirements
-- `PHP >=5.5.9`
+- `PHP >=5.6.4`
 - `Laravel >=5.2`
 
 ## Usage
