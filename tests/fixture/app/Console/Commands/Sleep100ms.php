@@ -2,13 +2,13 @@
 
 use Illuminate\Console\Command;
 
-class SleepOneSecond extends Command
+class Sleep100ms extends Command
 {
-    protected $signature = 'sleep-one-second';
+    protected $signature = 'sleep-100ms';
 
     public function handle()
     {
-        sleep(1);
+        usleep(100000);
         $this->info('Done!');
     }
 }

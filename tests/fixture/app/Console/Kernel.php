@@ -3,6 +3,6 @@
 class Kernel extends \Orchestra\Testbench\Console\Kernel
 {
     protected $commands = [
-        SleepOneSecond::class,
+        Sleep100ms::class,
     ];
 }
