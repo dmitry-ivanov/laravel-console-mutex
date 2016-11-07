@@ -3,15 +3,14 @@
 use Illuminate\Console\Command;
 use Illuminated\Console\WithoutOverlapping;
 
-class Sleep100ms extends Command
+class GenericCommand extends Command
 {
     use WithoutOverlapping;
 
-    protected $signature = 'sleep-100ms';
+    protected $signature = 'icm:generic';
 
     public function handle()
     {
-        usleep(100000);
         $this->info('Done!');
     }
 }
