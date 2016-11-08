@@ -1,5 +1,13 @@
 <?php
 
+namespace Illuminated\Console;
+
+use Artisan;
+use GenericCommand;
+use Mockery;
+use MysqlStrategyCommand;
+use TestCase;
+
 class WithoutOverlappingTraitTest extends TestCase
 {
     /** @test */
@@ -71,6 +79,7 @@ class WithoutOverlappingTraitTest extends TestCase
     {
         $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
         $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(false);
+        Mockery::mock()->shouldReceive('exit')->withNoArgs()->once();
 
         $code = Artisan::call('icm:generic');
         $output = Artisan::getOutput();
