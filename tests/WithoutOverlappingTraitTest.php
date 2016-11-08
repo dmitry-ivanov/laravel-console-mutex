@@ -23,4 +23,15 @@ class WithoutOverlappingTraitTest extends TestCase
         $command->setMutexStrategy('redis');
         $this->assertEquals('redis', $command->getMutexStrategy());
     }
+
+    /** @test */
+    public function it_generates_mutex_name_based_on_command_name_and_arguments()
+    {
+        $command = Mockery::mock(GenericCommand::class)->makePartial();
+        $command->shouldReceive('getName')->withNoArgs()->once()->andReturn('icm:generic');
+        $command->shouldReceive('argument')->withNoArgs()->once()->andReturn(['foo' => 'bar', 'baz' => 'faz']);
+
+        $md5 = md5(json_encode(['foo' => 'bar', 'baz' => 'faz']));
+        $this->assertEquals("icmutex-icm:generic-{$md5}", $command->getMutexName());
+    }
 }
