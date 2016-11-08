@@ -79,6 +79,7 @@ class WithoutOverlappingTraitTest extends TestCase
     {
         $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
         $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(false);
+        $mutex->shouldReceive('releaseLock')->withNoArgs();
         Mockery::mock()->shouldReceive('exit')->withNoArgs()->once();
 
         $code = Artisan::call('icm:generic');
