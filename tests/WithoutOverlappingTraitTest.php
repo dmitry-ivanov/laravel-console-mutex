@@ -35,11 +35,15 @@ class WithoutOverlappingTraitTest extends TestCase
         $this->assertEquals("icmutex-icm:generic-{$md5}", $command->getMutexName());
     }
 
-    /** @test */
+    /**
+     * @test
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
     public function it_is_trying_to_acquire_lock_on_command_initialization()
     {
         $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
-        $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(true);
+        $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(false);
 
         Artisan::call('icm:generic');
     }
