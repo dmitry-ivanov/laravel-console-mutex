@@ -61,4 +61,21 @@ class WithoutOverlappingTraitTest extends TestCase
 
         Artisan::call('icm:generic');
     }
+
+    /**
+     * @test
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function it_stops_execution_if_lock_had_not_been_acquired()
+    {
+        $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
+        $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(false);
+
+        $code = Artisan::call('icm:generic');
+        $output = Artisan::getOutput();
+
+        $this->assertEquals(0, $code);
+        $this->assertContains('Command is running now!', $output);
+    }
 }
