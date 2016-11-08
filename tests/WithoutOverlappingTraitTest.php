@@ -37,11 +37,13 @@ class WithoutOverlappingTraitTest extends TestCase
 
     /**
      * @test
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function it_is_trying_to_acquire_lock_on_command_initialization()
     {
-        // $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
-        // $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(false);
+        $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
+        $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(false);
 
         Artisan::call('icm:generic');
     }
