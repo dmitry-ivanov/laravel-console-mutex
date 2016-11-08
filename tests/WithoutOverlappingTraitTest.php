@@ -34,4 +34,13 @@ class WithoutOverlappingTraitTest extends TestCase
         $md5 = md5(json_encode(['foo' => 'bar', 'baz' => 'faz']));
         $this->assertEquals("icmutex-icm:generic-{$md5}", $command->getMutexName());
     }
+
+    /** @test */
+    public function it_is_trying_to_acquire_lock_on_command_initialization()
+    {
+        $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
+        $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(true);
+
+        Artisan::call('icm:generic');
+    }
 }
