@@ -1,8 +1,5 @@
 <?php
 
-use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Output\BufferedOutput;
-
 class WithoutOverlappingTraitTest extends TestCase
 {
     /** @test */
@@ -45,10 +42,9 @@ class WithoutOverlappingTraitTest extends TestCase
      */
     public function it_is_trying_to_acquire_lock_on_command_initialization()
     {
-        $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
-        $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(false);
+        // $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
+        // $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(false);
 
-        $command = new GenericCommand;
-        $command->run(new ArrayInput([]), new BufferedOutput);
+        Artisan::call('icm:generic');
     }
 }
