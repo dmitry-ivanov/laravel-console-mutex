@@ -3,7 +3,7 @@
 class WithoutOverlappingTraitTest extends TestCase
 {
     /** @test */
-    public function it_adds_mutex_strategy_concept_which_is_file_by_default()
+    public function it_adds_mutex_strategy_which_is_file_by_default()
     {
         $command = new GenericCommand;
         $this->assertEquals('file', $command->getMutexStrategy());
