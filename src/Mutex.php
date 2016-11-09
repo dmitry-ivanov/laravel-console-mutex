@@ -26,10 +26,6 @@ class Mutex
 
     private function strategy()
     {
-        if (!empty($this->strategy)) {
-            return $this->strategy;
-        }
-
         switch ($this->command->getMutexStrategy()) {
             case 'mysql':
                 return new MySqlLock(env('DB_USERNAME'), env('DB_PASSWORD'), env('DB_HOST'));
