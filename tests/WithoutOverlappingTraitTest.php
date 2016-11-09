@@ -1,13 +1,5 @@
 <?php
 
-namespace Illuminated\Console;
-
-use Artisan;
-use GenericCommand;
-use Mockery;
-use MysqlStrategyCommand;
-use TestCase;
-
 class WithoutOverlappingTraitTest extends TestCase
 {
     /** @test */
