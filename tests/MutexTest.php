@@ -2,6 +2,7 @@
 
 use Illuminated\Console\Mutex;
 use NinjaMutex\Lock\FlockLock;
+use NinjaMutex\Lock\MySqlLock;
 
 class MutexTest extends TestCase
 {
@@ -35,6 +36,17 @@ class MutexTest extends TestCase
         $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('foobar');
 
         $mutex = new Mutex($this->command);
-        $this->assertEquals(new FlockLock(storage_path('app')), $mutex->getStrategy());
+        $expectedStrategy = new FlockLock(storage_path('app'));
+        $this->assertEquals($expectedStrategy, $mutex->getStrategy());
+    }
+
+    /** @test */
+    public function it_supports_mysql_strategy()
+    {
+        $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('mysql');
+
+        $mutex = new Mutex($this->command);
+        $expectedStrategy = new MySqlLock(env('DB_USERNAME'), env('DB_PASSWORD'), env('DB_HOST'));
+        $this->assertEquals($expectedStrategy, $mutex->getStrategy());
     }
 }
