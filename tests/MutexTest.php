@@ -5,13 +5,6 @@ use Illuminated\Console\Mutex;
 class MutexTest extends TestCase
 {
     /** @test */
-    public function it_can_not_be_initiated_without_constructor_arguments()
-    {
-        $this->expectException(TypeError::class);
-        return new Mutex;
-    }
-
-    /** @test */
     public function it_has_one_required_constructor_argument_which_is_command()
     {
         $command = Mockery::mock(GenericCommand::class)->makePartial();
