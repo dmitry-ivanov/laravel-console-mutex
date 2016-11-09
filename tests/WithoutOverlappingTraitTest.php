@@ -43,49 +43,49 @@ class WithoutOverlappingTraitTest extends TestCase
         $this->assertEquals("icmutex-icm:generic-{$md5}", $command->getMutexName());
     }
 
-    /**
-     * @test
-     * @runInSeparateProcess
-     * @preserveGlobalState disabled
-     */
-    public function it_is_trying_to_acquire_lock_on_command_initialization()
-    {
-        $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
-        $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(false);
-
-        Artisan::call('icm:generic');
-    }
-
-    /**
-     * @test
-     * @runInSeparateProcess
-     * @preserveGlobalState disabled
-     */
-    public function it_is_releasing_the_lock_after_execution_if_it_was_acquired()
-    {
-        $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
-        $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(true);
-        $mutex->shouldReceive('releaseLock')->withNoArgs();
-
-        Artisan::call('icm:generic');
-    }
-
-    /**
-     * @test
-     * @runInSeparateProcess
-     * @preserveGlobalState disabled
-     */
-    public function it_stops_execution_if_lock_had_not_been_acquired()
-    {
-        $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
-        $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(false);
-        $mutex->shouldReceive('releaseLock')->withNoArgs();
-        Mockery::mock()->shouldReceive('exit')->withNoArgs()->once();
-
-        $code = Artisan::call('icm:generic');
-        $output = Artisan::getOutput();
-
-        $this->assertEquals(0, $code);
-        $this->assertContains('Command is running now!', $output);
-    }
+    // /**
+    //  * @test
+    //  * @runInSeparateProcess
+    //  * @preserveGlobalState disabled
+    //  */
+    // public function it_is_trying_to_acquire_lock_on_command_initialization()
+    // {
+    //     $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
+    //     $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(false);
+    //
+    //     Artisan::call('icm:generic');
+    // }
+    //
+    // /**
+    //  * @test
+    //  * @runInSeparateProcess
+    //  * @preserveGlobalState disabled
+    //  */
+    // public function it_is_releasing_the_lock_after_execution_if_it_was_acquired()
+    // {
+    //     $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
+    //     $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(true);
+    //     $mutex->shouldReceive('releaseLock')->withNoArgs();
+    //
+    //     Artisan::call('icm:generic');
+    // }
+    //
+    // /**
+    //  * @test
+    //  * @runInSeparateProcess
+    //  * @preserveGlobalState disabled
+    //  */
+    // public function it_stops_execution_if_lock_had_not_been_acquired()
+    // {
+    //     $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
+    //     $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(false);
+    //     $mutex->shouldReceive('releaseLock')->withNoArgs();
+    //     Mockery::mock()->shouldReceive('exit')->withNoArgs()->once();
+    //
+    //     $code = Artisan::call('icm:generic');
+    //     $output = Artisan::getOutput();
+    //
+    //     $this->assertEquals(0, $code);
+    //     $this->assertContains('Command is running now!', $output);
+    // }
 }
