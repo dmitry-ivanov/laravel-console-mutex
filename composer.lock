@@ -801,16 +801,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.3",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "c0125896dbb151380ab47e96c621741e79623beb"
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c0125896dbb151380ab47e96c621741e79623beb",
-                "reference": "c0125896dbb151380ab47e96c621741e79623beb",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
                 "shasum": ""
             },
             "require": {
@@ -845,7 +845,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-10-17 15:23:22"
+            "time": "2016-11-07 23:38:38"
         },
         {
             "name": "psr/log",
@@ -2241,21 +2241,21 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v3.3.3",
+            "version": "v3.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "bbed8ed7d023b6125cf92bb32fb88c079d8ea345"
+                "reference": "5f8e4a02999d8bd41d55958a17dcb75701f90f8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/bbed8ed7d023b6125cf92bb32fb88c079d8ea345",
-                "reference": "bbed8ed7d023b6125cf92bb32fb88c079d8ea345",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/5f8e4a02999d8bd41d55958a17dcb75701f90f8f",
+                "reference": "5f8e4a02999d8bd41d55958a17dcb75701f90f8f",
                 "shasum": ""
             },
             "require": {
                 "fzaninotto/faker": "~1.4",
-                "laravel/framework": "~5.3.3",
+                "laravel/framework": "~5.3.11",
                 "orchestra/database": "~3.3.1",
                 "php": ">=5.6.0",
                 "symfony/css-selector": "3.1.*",
@@ -2300,7 +2300,7 @@
                 "orchestral",
                 "testing"
             ],
-            "time": "2016-10-16 12:00:43"
+            "time": "2016-11-08 11:14:17"
         },
         {
             "name": "phpdocumentor/reflection-common",
