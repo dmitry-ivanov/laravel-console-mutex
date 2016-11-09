@@ -73,4 +73,18 @@ class MutexTest extends TestCase
         $expectedStrategy = new MemcachedLock(Cache::getStore()->getMemcached());
         $this->assertEquals($expectedStrategy, $mutex->getStrategy());
     }
+
+    /**
+     * @test
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function it_delegates_public_method_calls_to_ninja_mutex()
+    {
+        $ninja = Mockery::mock('overload:NinjaMutex\Mutex');
+        $ninja->shouldReceive('isLocked')->once();
+
+        $mutex = new Mutex($this->command);
+        $mutex->isLocked();
+    }
 }
