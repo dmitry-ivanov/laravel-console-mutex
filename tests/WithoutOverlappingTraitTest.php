@@ -25,7 +25,7 @@ class WithoutOverlappingTraitTest extends TestCase
     }
 
     /** @test */
-    public function it_generates_mutex_name_based_on_command_name_and_arguments()
+    public function it_generates_mutex_name_based_on_the_command_name_and_arguments()
     {
         $command = Mockery::mock(GenericCommand::class)->makePartial();
         $command->shouldReceive('getName')->withNoArgs()->once()->andReturn('icm:generic');
@@ -70,7 +70,7 @@ class WithoutOverlappingTraitTest extends TestCase
      * @runInSeparateProcess
      * @preserveGlobalState disabled
      */
-    public function it_is_releasing_the_lock_after_execution()
+    public function it_is_releasing_the_lock_after_command_execution()
     {
         $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
         $mutex->shouldReceive('releaseLock')->withNoArgs()->once();
