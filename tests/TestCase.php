@@ -8,9 +8,4 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     {
         $app->singleton(KernelContract::class, Kernel::class);
     }
-
-    protected function getEnvironmentSetUp($app)
-    {
-        $app->useStoragePath(__DIR__ . '/fixture/storage');
-    }
 }
