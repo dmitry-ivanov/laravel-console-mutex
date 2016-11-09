@@ -3,6 +3,7 @@
 use Illuminated\Console\Mutex;
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\MySqlLock;
+use NinjaMutex\Lock\PredisRedisLock;
 
 class MutexTest extends TestCase
 {
@@ -47,6 +48,16 @@ class MutexTest extends TestCase
 
         $mutex = new Mutex($this->command);
         $expectedStrategy = new MySqlLock(env('DB_USERNAME'), env('DB_PASSWORD'), env('DB_HOST'));
+        $this->assertEquals($expectedStrategy, $mutex->getStrategy());
+    }
+
+    /** @test */
+    public function it_supports_redis_strategy()
+    {
+        $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('redis');
+
+        $mutex = new Mutex($this->command);
+        $expectedStrategy = new PredisRedisLock(Redis::connection());
         $this->assertEquals($expectedStrategy, $mutex->getStrategy());
     }
 }
