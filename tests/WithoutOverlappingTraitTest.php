@@ -65,17 +65,17 @@ class WithoutOverlappingTraitTest extends TestCase
         Artisan::call('icm:generic');
     }
 
-    // /**
-    //  * @test
-    //  * @runInSeparateProcess
-    //  * @preserveGlobalState disabled
-    //  */
-    // public function it_is_releasing_the_lock_after_execution_if_it_was_acquired()
-    // {
-    //     $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
-    //     $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(true);
-    //     $mutex->shouldReceive('releaseLock')->withNoArgs();
-    //
-    //     Artisan::call('icm:generic');
-    // }
+    /**
+     * @test
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
+     */
+    public function it_is_releasing_the_lock_after_execution()
+    {
+        $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
+        $mutex->shouldReceive('releaseLock')->withNoArgs()->once();
+
+        $command = new GenericCommand;
+        $command->releaseMutexLock($mutex);
+    }
 }
