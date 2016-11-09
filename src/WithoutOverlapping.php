@@ -2,6 +2,7 @@
 
 namespace Illuminated\Console;
 
+use RuntimeException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -18,8 +19,7 @@ trait WithoutOverlapping
     {
         $mutex = new Mutex($this);
         if (!$mutex->acquireLock(0)) {
-            $this->info('Command is running now!');
-            exit();
+            throw new RuntimeException('Command is running now!');
         }
 
         register_shutdown_function(function () use ($mutex) {
