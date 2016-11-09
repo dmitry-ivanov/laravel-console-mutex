@@ -22,9 +22,7 @@ trait WithoutOverlapping
             throw new RuntimeException('Command is running now!');
         }
 
-        register_shutdown_function(function () use ($mutex) {
-            $mutex->releaseLock();
-        });
+        register_shutdown_function([$this, 'releaseMutexLock'], $mutex);
     }
 
     public function getMutexStrategy()
@@ -42,5 +40,10 @@ trait WithoutOverlapping
         $name = $this->getName();
         $arguments = json_encode($this->argument());
         return "icmutex-{$name}-" . md5($arguments);
+    }
+
+    public function releaseMutexLock(Mutex $mutex)
+    {
+        $mutex->releaseLock();
     }
 }
