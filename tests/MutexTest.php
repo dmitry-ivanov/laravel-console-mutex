@@ -2,6 +2,7 @@
 
 use Illuminated\Console\Mutex;
 use NinjaMutex\Lock\FlockLock;
+use NinjaMutex\Lock\MemcachedLock;
 use NinjaMutex\Lock\MySqlLock;
 use NinjaMutex\Lock\PredisRedisLock;
 
@@ -58,6 +59,18 @@ class MutexTest extends TestCase
 
         $mutex = new Mutex($this->command);
         $expectedStrategy = new PredisRedisLock(Redis::connection());
+        $this->assertEquals($expectedStrategy, $mutex->getStrategy());
+    }
+
+    /** @test */
+    public function it_supports_memcached_strategy()
+    {
+        Cache::shouldReceive('getStore')->withNoArgs()->twice()->andReturnSelf();
+        Cache::shouldReceive('getMemcached')->withNoArgs()->twice()->andReturnSelf();
+        $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('memcached');
+
+        $mutex = new Mutex($this->command);
+        $expectedStrategy = new MemcachedLock(Cache::getStore()->getMemcached());
         $this->assertEquals($expectedStrategy, $mutex->getStrategy());
     }
 }
