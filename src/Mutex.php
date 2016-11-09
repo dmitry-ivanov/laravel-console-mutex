@@ -20,12 +20,16 @@ class Mutex
     public function __construct(Command $command)
     {
         $this->command = $command;
-        $this->strategy = $this->strategy();
+        $this->strategy = $this->getStrategy();
         $this->ninja = new Ninja($command->getMutexName(), $this->strategy);
     }
 
-    private function strategy()
+    public function getStrategy()
     {
+        if (!empty($this->strategy)) {
+            return $this->strategy;
+        }
+
         switch ($this->command->getMutexStrategy()) {
             case 'mysql':
                 return new MySqlLock(env('DB_USERNAME'), env('DB_PASSWORD'), env('DB_HOST'));
