@@ -19,7 +19,7 @@ class MutexTest extends TestCase
     }
 
     /** @test */
-    public function it_has_one_required_constructor_argument_which_is_command()
+    public function it_requires_command_as_constructor_parameter()
     {
         $mutex = new Mutex($this->command);
         $this->assertInstanceOf(Mutex::class, $mutex);
