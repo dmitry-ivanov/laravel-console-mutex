@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "902ee7ae2b3cc79e64b482db36f2e367",
-    "content-hash": "e7aab51493d2294ae68575bfe33c1d48",
+    "hash": "f112d1ea999ab653b00c9ba4cc7968c3",
+    "content-hash": "d175399fae2b7c292891154ca1acd6d0",
     "packages": [
         {
             "name": "arvenil/ninja-mutex",
-            "version": "0.5.1",
+            "version": "0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/arvenil/ninja-mutex.git",
-                "reference": "9726729fe27ff02acd9887e85c150d353a073a2e"
+                "reference": "8c0f5d10f8fb1481b9d98488dbbe2bf84c2e1a25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/arvenil/ninja-mutex/zipball/9726729fe27ff02acd9887e85c150d353a073a2e",
-                "reference": "9726729fe27ff02acd9887e85c150d353a073a2e",
+                "url": "https://api.github.com/repos/arvenil/ninja-mutex/zipball/8c0f5d10f8fb1481b9d98488dbbe2bf84c2e1a25",
+                "reference": "8c0f5d10f8fb1481b9d98488dbbe2bf84c2e1a25",
                 "shasum": ""
             },
             "require": {
@@ -29,6 +29,7 @@
                 "ext-memcache": "*",
                 "ext-memcached": "*",
                 "ext-pdo_mysql": "*",
+                "ext-redis": "*",
                 "mikey179/vfsstream": "1.4.* || 1.5.*",
                 "predis/predis": "1.0.*",
                 "scrutinizer/ocular": "1.1.*"
@@ -67,7 +68,7 @@
                 "mysql",
                 "redis"
             ],
-            "time": "2015-09-10 15:12:42"
+            "time": "2016-05-31 13:47:32"
         },
         {
             "name": "classpreloader/classpreloader",
