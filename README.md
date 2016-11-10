@@ -41,8 +41,7 @@ Prevents overlapping for Laravel console commands.
     ```
 
 3. Now your command is protected against overlapping:
-
-![Example](doc/img/example.png)
+    ![Example](doc/img/example.png)
 
 ## Strategies
 
