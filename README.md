@@ -21,13 +21,13 @@ Prevents overlapping for Laravel console commands.
 ## Usage
 
 1. Install package through `composer`:
-    
+
     ```shell
     composer require illuminated/console-mutex
     ```
 
 2. Use `Illuminated\Console\WithoutOverlapping` trait in your console command class:
-    
+
     ```php
     namespace App\Console\Commands;
 
