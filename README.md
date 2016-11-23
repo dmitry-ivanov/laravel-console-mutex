@@ -26,7 +26,7 @@ Prevents overlapping for Laravel console commands.
     composer require illuminated/console-mutex
     ```
 
-2. Use `Illuminated\Console\WithoutOverlapping` trait in your console command class:
+2. Use `Illuminated\Console\WithoutOverlapping` trait:
 
     ```php
     namespace App\Console\Commands;
