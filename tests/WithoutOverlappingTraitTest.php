@@ -46,7 +46,7 @@ class WithoutOverlappingTraitTest extends TestCase
         $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(true);
         $mutex->shouldReceive('releaseLock')->withNoArgs();
 
-        Artisan::call('icm:generic');
+        $this->artisan('icm:generic');
     }
 
     /**
@@ -62,7 +62,7 @@ class WithoutOverlappingTraitTest extends TestCase
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('Command is running now!');
 
-        Artisan::call('icm:generic');
+        $this->artisan('icm:generic');
     }
 
     /**
