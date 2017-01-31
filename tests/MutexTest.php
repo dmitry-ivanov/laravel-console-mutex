@@ -58,7 +58,7 @@ class MutexTest extends TestCase
         $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('redis');
 
         $mutex = new Mutex($this->command);
-        $expectedStrategy = new PredisRedisLock(Redis::connection());
+        $expectedStrategy = new PredisRedisLock(Redis::connection()->client());
         $this->assertEquals($expectedStrategy, $mutex->getStrategy());
     }
 

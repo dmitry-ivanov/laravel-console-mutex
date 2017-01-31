@@ -35,7 +35,7 @@ class Mutex
                 return new MySqlLock(env('DB_USERNAME'), env('DB_PASSWORD'), env('DB_HOST'));
 
             case 'redis':
-                return new PredisRedisLock(Redis::connection());
+                return new PredisRedisLock(Redis::connection()->client());
 
             case 'memcached':
                 return new MemcachedLock(Cache::getStore()->getMemcached());
