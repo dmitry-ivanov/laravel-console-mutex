@@ -9,6 +9,7 @@ use NinjaMutex\Lock\MemcachedLock;
 use NinjaMutex\Lock\MySqlLock;
 use NinjaMutex\Lock\PredisRedisLock;
 use NinjaMutex\Mutex as Ninja;
+use Predis\Client;
 use Redis;
 
 class Mutex
@@ -48,7 +49,12 @@ class Mutex
 
     public function getRedisClient()
     {
-        return Redis::connection()->client();
+        $connection = Redis::connection();
+        if ($connection instanceof Client) {
+            return $connection;
+        }
+
+        return $connection->client();
     }
 
     public function __call($method, $parameters)
