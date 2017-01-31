@@ -5,12 +5,13 @@ use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\MemcachedLock;
 use NinjaMutex\Lock\MySqlLock;
 use NinjaMutex\Lock\PredisRedisLock;
+use Predis\Client;
 
 class MutexTest extends TestCase
 {
     private $command;
 
-    protected function setUp()
+    public function setUp()
     {
         parent::setUp();
 
@@ -53,12 +54,19 @@ class MutexTest extends TestCase
     }
 
     /** @test */
+    public function it_has_get_redis_client_method()
+    {
+        $mutex = new Mutex($this->command);
+        $this->assertInstanceOf(Client::class, $mutex->getRedisClient());
+    }
+
+    /** @test */
     public function it_supports_redis_strategy()
     {
         $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('redis');
 
         $mutex = new Mutex($this->command);
-        $expectedStrategy = new PredisRedisLock(Redis::connection()->client());
+        $expectedStrategy = new PredisRedisLock($mutex->getRedisClient());
         $this->assertEquals($expectedStrategy, $mutex->getStrategy());
     }
 
