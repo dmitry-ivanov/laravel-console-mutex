@@ -50,11 +50,7 @@ class Mutex
     public function getRedisClient()
     {
         $connection = Redis::connection();
-        if ($connection instanceof Client) {
-            return $connection;
-        }
-
-        return $connection->client();
+        return ($connection instanceof Client) ? $connection : $connection->client();
     }
 
     public function __call($method, $parameters)
