@@ -35,7 +35,7 @@ class Mutex
                 return new MySqlLock(env('DB_USERNAME'), env('DB_PASSWORD'), env('DB_HOST'));
 
             case 'redis':
-                return new PredisRedisLock(Redis::connection()->client());
+                return new PredisRedisLock($this->getRedisClient());
 
             case 'memcached':
                 return new MemcachedLock(Cache::getStore()->getMemcached());
@@ -44,6 +44,11 @@ class Mutex
             default:
                 return new FlockLock(storage_path('app'));
         }
+    }
+
+    public function getRedisClient()
+    {
+        return Redis::connection()->client();
     }
 
     public function __call($method, $parameters)
