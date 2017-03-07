@@ -1,6 +1,11 @@
 <?php
 
+namespace Illuminated\Console\ConsoleMutex\Tests;
+
+use GenericCommand;
+use Illuminate\Support\Facades\Cache;
 use Illuminated\Console\Mutex;
+use Mockery;
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\MemcachedLock;
 use NinjaMutex\Lock\MySqlLock;

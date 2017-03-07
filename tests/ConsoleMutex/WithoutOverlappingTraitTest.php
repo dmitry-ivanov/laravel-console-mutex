@@ -1,5 +1,14 @@
 <?php
 
+namespace Illuminated\Console\ConsoleMutex\Tests;
+
+use GenericCommand;
+use Mockery;
+use MysqlStrategyCommand;
+use NullTimeoutCommand;
+use RuntimeException;
+use TimeoutCommand;
+
 class WithoutOverlappingTraitTest extends TestCase
 {
     /** @test */
