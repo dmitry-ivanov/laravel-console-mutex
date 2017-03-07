@@ -18,7 +18,7 @@ trait WithoutOverlapping
     protected function initializeMutex()
     {
         $mutex = new Mutex($this);
-        if (!$mutex->acquireLock(0)) {
+        if (!$mutex->acquireLock($this->getMutexTimeout())) {
             throw new RuntimeException('Command is running now!');
         }
 
@@ -33,6 +33,16 @@ trait WithoutOverlapping
     public function setMutexStrategy($strategy)
     {
         $this->mutexStrategy = $strategy;
+    }
+
+    public function getMutexTimeout()
+    {
+        return (isset($this->mutexTimeout) ? $this->mutexTimeout : 0);
+    }
+
+    public function setMutexTimeout($timeout)
+    {
+        $this->mutexTimeout = $timeout;
     }
 
     public function getMutexName()
