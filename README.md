@@ -100,25 +100,6 @@ class MyProtectedCommand extends Command
 
 ## Advanced
 
-### Mutex for several commands
-
-Sometimes it is useful to set common mutex for a several commands. You can easily achieve this by setting them the same mutex name.
-By default, mutex name is generated based on a command's name and arguments. To change this, just override `getMutexName` method in your command:
-
-```php
-class MyProtectedCommand extends Command
-{
-    use WithoutOverlapping;
-
-    public function getMutexName()
-    {
-        return "icmutex-for-command1-and-command2";
-    }
-
-    // ...
-}
-```
-
 ### Mutex timeout
 
 By default mutex is checking for a running command, and if it finds such - it just exits. However, you can manually set
@@ -160,6 +141,25 @@ There are three possible options for `$mutexTimeout` field:
 - `0` - check without waiting (default);
 - `{milliseconds}` - check, and wait for a maximum of milliseconds specified;
 - `null` - wait, till running instance finish its execution;
+
+### Mutex for several commands
+
+Sometimes it is useful to set common mutex for a several commands. You can easily achieve this by setting them the same mutex name.
+By default, mutex name is generated based on a command's name and arguments. To change this, just override `getMutexName` method in your command:
+
+```php
+class MyProtectedCommand extends Command
+{
+    use WithoutOverlapping;
+
+    public function getMutexName()
+    {
+        return "icmutex-for-command1-and-command2";
+    }
+
+    // ...
+}
+```
 
 ## Troubleshooting
 
