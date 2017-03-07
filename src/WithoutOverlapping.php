@@ -37,7 +37,7 @@ trait WithoutOverlapping
 
     public function getMutexTimeout()
     {
-        return (isset($this->mutexTimeout) ? $this->mutexTimeout : 0);
+        return (property_exists($this, 'mutexTimeout') ? $this->mutexTimeout : 0);
     }
 
     public function setMutexTimeout($timeout)
