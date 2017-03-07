@@ -19,8 +19,8 @@ Prevents overlapping for Laravel console commands.
 - [Usage](#usage)
 - [Strategies](#strategies)
 - [Advanced](#advanced)
-  - [Common mutex for several commands](#common-mutex-for-several-commands)
-  - [Custom mutex timeout](#custom-mutex-timeout)
+  - [Common mutexes](#common-mutexes)
+  - [Mutex timeout](#mutex-timeout)
 - [Troubleshooting](#troubleshooting)
   - [Trait included, but nothing happens?](#trait-included-but-nothing-happens)
   - [Several traits conflict?](#several-traits-conflict)
@@ -100,7 +100,7 @@ class MyProtectedCommand extends Command
 
 ## Advanced
 
-### Common mutex for several commands
+### Common mutexes
 
 Sometimes it is useful to set common mutex for a several commands. You can easily achieve this by setting them the same mutex name.
 By default, mutex name is generated based on a command's name and arguments. To change this, just override `getMutexName` method in your command:
@@ -119,7 +119,7 @@ class MyProtectedCommand extends Command
 }
 ```
 
-### Custom mutex timeout
+### Mutex timeout
 
 By default mutex is checking for a running command, and if it finds such - it just exits. However, you can manually set
 required timeout for a mutex, so it can wait for another instance to finish it's execution, instead of just quiting immediately.
