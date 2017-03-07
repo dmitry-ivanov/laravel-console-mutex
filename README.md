@@ -39,9 +39,6 @@ Prevents overlapping for Laravel console commands.
 2. Use `Illuminated\Console\WithoutOverlapping` trait:
 
     ```php
-    namespace App\Console\Commands;
-
-    use Illuminate\Console\Command;
     use Illuminated\Console\WithoutOverlapping;
 
     class MyProtectedCommand extends Command
