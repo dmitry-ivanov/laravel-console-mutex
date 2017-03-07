@@ -19,7 +19,7 @@ Prevents overlapping for Laravel console commands.
 - [Usage](#usage)
 - [Strategies](#strategies)
 - [Advanced](#advanced)
-  - [Mutex timeout](#mutex-timeout)
+  - [Set custom timeout](#set-custom-timeout)
   - [Mutex for several commands](#mutex-for-several-commands)
 - [Troubleshooting](#troubleshooting)
   - [Trait included, but nothing happens?](#trait-included-but-nothing-happens)
@@ -100,7 +100,7 @@ class MyProtectedCommand extends Command
 
 ## Advanced
 
-### Mutex timeout
+### Set custom timeout
 
 By default mutex is checking for a running command, and if it finds such - it just exits. However, you can manually set
 required timeout for a mutex, so it can wait for another instance to finish it's execution, instead of just quiting immediately.
