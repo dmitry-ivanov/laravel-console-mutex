@@ -27,7 +27,7 @@ trait WithoutOverlapping
 
     public function getMutexStrategy()
     {
-        return (isset($this->mutexStrategy) ? $this->mutexStrategy : 'file');
+        return (property_exists($this, 'mutexStrategy') ? $this->mutexStrategy : 'file');
     }
 
     public function setMutexStrategy($strategy)
