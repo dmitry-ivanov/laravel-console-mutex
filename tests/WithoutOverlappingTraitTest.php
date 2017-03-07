@@ -5,15 +5,13 @@ class WithoutOverlappingTraitTest extends TestCase
     /** @test */
     public function it_adds_mutex_strategy_which_is_file_by_default()
     {
-        $command = new GenericCommand;
-        $this->assertEquals('file', $command->getMutexStrategy());
+        $this->assertEquals('file', (new GenericCommand)->getMutexStrategy());
     }
 
     /** @test */
     public function mutex_strategy_can_be_overloaded_by_protected_field()
     {
-        $command = new MysqlStrategyCommand;
-        $this->assertEquals('mysql', $command->getMutexStrategy());
+        $this->assertEquals('mysql', (new MysqlStrategyCommand)->getMutexStrategy());
     }
 
     /** @test */
@@ -21,7 +19,14 @@ class WithoutOverlappingTraitTest extends TestCase
     {
         $command = new GenericCommand;
         $command->setMutexStrategy('redis');
+
         $this->assertEquals('redis', $command->getMutexStrategy());
+    }
+
+    /** @test */
+    public function it_adds_mutex_timeout_which_is_zero_by_default()
+    {
+        $this->assertEquals(0, (new GenericCommand)->getMutexTimeout());
     }
 
     /** @test */
