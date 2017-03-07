@@ -33,7 +33,11 @@ class Mutex
 
         switch ($this->command->getMutexStrategy()) {
             case 'mysql':
-                return new MySqlLock(env('DB_USERNAME'), env('DB_PASSWORD'), env('DB_HOST'));
+                return new MySqlLock(
+                    config('database.connections.mysql.username'),
+                    config('database.connections.mysql.password'),
+                    config('database.connections.mysql.host')
+                );
 
             case 'redis':
                 return new PredisRedisLock($this->getRedisClient());

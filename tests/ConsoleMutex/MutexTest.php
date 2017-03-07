@@ -54,7 +54,11 @@ class MutexTest extends TestCase
         $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('mysql');
 
         $mutex = new Mutex($this->command);
-        $expectedStrategy = new MySqlLock(env('DB_USERNAME'), env('DB_PASSWORD'), env('DB_HOST'));
+        $expectedStrategy = new MySqlLock(
+            config('database.connections.mysql.username'),
+            config('database.connections.mysql.password'),
+            config('database.connections.mysql.host')
+        );
         $this->assertEquals($expectedStrategy, $mutex->getStrategy());
     }
 
