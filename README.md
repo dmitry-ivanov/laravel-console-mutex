@@ -111,7 +111,7 @@ class MyProtectedCommand extends Command
 
     public function getMutexName()
     {
-        return "icmutex-custom-name";
+        return "icmutex-for-command1-and-command2";
     }
 
     // ...
