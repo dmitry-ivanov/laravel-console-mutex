@@ -13,6 +13,16 @@
 
 Prevents overlapping for Laravel console commands.
 
+## Table of contents
+
+- [Requirements](#requirements)
+- [Usage](#usage)
+- [Strategies](#strategies)
+- [Advanced](#advanced)
+- [Troubleshooting](#troubleshooting)
+  - [Trait included, but nothing happens?](#trait-included-but-nothing-happens)
+  - [Several traits conflict?](#several-traits-conflict)
+
 ## Requirements
 
 - `PHP >=5.5.9`
