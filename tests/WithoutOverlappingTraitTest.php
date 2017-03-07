@@ -30,6 +30,12 @@ class WithoutOverlappingTraitTest extends TestCase
     }
 
     /** @test */
+    public function mutex_timeout_can_be_overloaded_by_protected_field()
+    {
+        $this->assertEquals(3000, (new TimeoutCommand)->getMutexTimeout());
+    }
+
+    /** @test */
     public function it_generates_mutex_name_based_on_the_command_name_and_arguments()
     {
         $command = Mockery::mock(GenericCommand::class)->makePartial();
