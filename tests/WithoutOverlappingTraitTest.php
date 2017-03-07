@@ -42,6 +42,24 @@ class WithoutOverlappingTraitTest extends TestCase
     }
 
     /** @test */
+    public function mutex_timeout_can_be_set_by_the_public_method()
+    {
+        $command = new GenericCommand;
+        $command->setMutexTimeout(5000);
+
+        $this->assertEquals(5000, $command->getMutexTimeout());
+    }
+
+    /** @test */
+    public function mutex_timeout_can_be_set_to_null_by_the_public_method()
+    {
+        $command = new GenericCommand;
+        $command->setMutexTimeout(null);
+
+        $this->assertNull($command->getMutexTimeout());
+    }
+
+    /** @test */
     public function it_generates_mutex_name_based_on_the_command_name_and_arguments()
     {
         $command = Mockery::mock(GenericCommand::class)->makePartial();
