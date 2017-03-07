@@ -102,8 +102,8 @@ class MyProtectedCommand extends Command
 
 ### Set custom timeout
 
-By default mutex is checking for a running command, and if it finds such - it just exits. However, you can manually set
-required timeout for a mutex, so it can wait for another instance to finish it's execution, instead of just quiting immediately.
+By default mutex is checking for a running command, and if it finds such it just exits. However, you can manually set
+required timeout for a mutex, so it can wait for another command to finish it's execution, instead of just quitting immediately.
 
 You can change mutex timeout by specifying `$mutexTimeout` field:
 
@@ -140,7 +140,7 @@ There are three possible options for `$mutexTimeout` field:
 
 - `0` - check without waiting (default);
 - `{milliseconds}` - check, and wait for a maximum of milliseconds specified;
-- `null` - wait, till running instance finish its execution;
+- `null` - wait, till running command finish it's execution;
 
 ### Handle several commands
 
