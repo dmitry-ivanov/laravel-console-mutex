@@ -20,6 +20,7 @@ Prevents overlapping for Laravel console commands.
 - [Strategies](#strategies)
 - [Advanced](#advanced)
   - [Common mutex for several commands](#common-mutex-for-several-commands)
+  - [Custom mutex timeout](#custom-mutex-timeout)
 - [Troubleshooting](#troubleshooting)
   - [Trait included, but nothing happens?](#trait-included-but-nothing-happens)
   - [Several traits conflict?](#several-traits-conflict)
@@ -117,6 +118,48 @@ class MyProtectedCommand extends Command
     // ...
 }
 ```
+
+### Custom mutex timeout
+
+By default mutex is checking for a running command, and if it finds such - it just exits. However, you can manually set
+required timeout for a mutex, so it can wait for another instance to finish it's execution, instead of just quiting immediately.
+
+You can change mutex timeout by specifying `$mutexTimeout` field:
+
+```php
+class MyProtectedCommand extends Command
+{
+    use WithoutOverlapping;
+
+    protected $mutexTimeout = 3000; // milliseconds
+
+    // ...
+}
+```
+
+Or by using `setMutexTimeout` method:
+
+```php
+class MyProtectedCommand extends Command
+{
+    use WithoutOverlapping;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->setMutexTimeout(3000); // milliseconds
+    }
+
+    // ...
+}
+```
+
+There are three possible options for `$mutexTimeout` field:
+
+- `0` - check without waiting (default);
+- `{milliseconds}` - check, and wait for a maximum of milliseconds specified;
+- `null` - wait, till running instance finish its execution;
 
 ## Troubleshooting
 
