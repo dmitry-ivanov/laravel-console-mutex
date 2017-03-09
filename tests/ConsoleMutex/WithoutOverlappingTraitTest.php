@@ -6,7 +6,6 @@ use GenericCommand;
 use Mockery;
 use MysqlStrategyCommand;
 use NullTimeoutCommand;
-use RuntimeException;
 use TimeoutCommand;
 
 class WithoutOverlappingTraitTest extends TestCase
@@ -102,11 +101,11 @@ class WithoutOverlappingTraitTest extends TestCase
     {
         $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
         $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(false);
-
-        $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessage('Command is running now!');
+        $mutex->shouldReceive('releaseLock')->withNoArgs();
 
         $this->artisan('icm:generic');
+
+        $this->seeArtisanOutput('Command is running now!');
     }
 
     /**
