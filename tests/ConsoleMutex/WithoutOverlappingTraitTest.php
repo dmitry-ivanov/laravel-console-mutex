@@ -97,7 +97,7 @@ class WithoutOverlappingTraitTest extends TestCase
      * @runInSeparateProcess
      * @preserveGlobalState disabled
      */
-    public function it_throws_an_exception_if_trying_to_run_another_instance_of_the_command()
+    public function it_blocks_if_trying_to_run_another_instance_of_the_command()
     {
         $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
         $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(false);
