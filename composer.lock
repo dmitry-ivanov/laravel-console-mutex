@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a4a8b0265db1ec1203588024f64b79c4",
+    "content-hash": "03eea7f89946f781b412c2452fecb1a2",
     "packages": [
         {
             "name": "arvenil/ninja-mutex",
@@ -1771,6 +1771,55 @@
                 "test"
             ],
             "time": "2015-05-11T14:41:42+00:00"
+        },
+        {
+            "name": "illuminated/testing-tools",
+            "version": "0.5.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dmitry-ivanov/laravel-testing-tools.git",
+                "reference": "e352127e0ca3a483a81a164fe4b7b1c6e836b020"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dmitry-ivanov/laravel-testing-tools/zipball/e352127e0ca3a483a81a164fe4b7b1c6e836b020",
+                "reference": "e352127e0ca3a483a81a164fe4b7b1c6e836b020",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*",
+                "mockery/mockery": "^0.9",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "orchestra/database": "^3.1",
+                "orchestra/testbench": "^3.1",
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Illuminated\\Testing\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dmitry Ivanov",
+                    "email": "dmitry.g.ivanov@gmail.com"
+                }
+            ],
+            "description": "Provides Laravel-specific testing helpers and asserts.",
+            "keywords": [
+                "asserts",
+                "helpers",
+                "laravel",
+                "testing"
+            ],
+            "time": "2017-03-06T17:55:25+00:00"
         },
         {
             "name": "mockery/mockery",
