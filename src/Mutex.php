@@ -54,7 +54,11 @@ class Mutex
     public function getRedisClient()
     {
         $connection = Redis::connection();
-        return ($connection instanceof Client) ? $connection : $connection->client();
+
+        /* @laravel-versions */
+        $redisClient = ($connection instanceof Client) ? $connection : $connection->client();
+
+        return $redisClient;
     }
 
     public function __call($method, $parameters)
