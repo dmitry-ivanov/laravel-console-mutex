@@ -1,4 +1,4 @@
-# Laravel console mutex
+# Laravel Console Mutex
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/e4083afa-8ca9-4ac0-8be8-9bfadcb05fa7/big.png)](https://insight.sensiolabs.com/projects/e4083afa-8ca9-4ac0-8be8-9bfadcb05fa7)
 
