@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "aea8cb0c4886b6ddc281fef13e0ab20d",
+    "content-hash": "598dde71e6699fd205de41a5de64dda6",
     "packages": [
         {
             "name": "arvenil/ninja-mutex",
@@ -1774,16 +1774,16 @@
         },
         {
             "name": "illuminated/testing-tools",
-            "version": "0.5.8",
+            "version": "0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dmitry-ivanov/laravel-testing-tools.git",
-                "reference": "7b66aaef323292b4eb8b3e1ef666742ef4c9b5d3"
+                "reference": "d18a011f3ea3cc341e6d369d4e1d01b59503f851"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dmitry-ivanov/laravel-testing-tools/zipball/7b66aaef323292b4eb8b3e1ef666742ef4c9b5d3",
-                "reference": "7b66aaef323292b4eb8b3e1ef666742ef4c9b5d3",
+                "url": "https://api.github.com/repos/dmitry-ivanov/laravel-testing-tools/zipball/d18a011f3ea3cc341e6d369d4e1d01b59503f851",
+                "reference": "d18a011f3ea3cc341e6d369d4e1d01b59503f851",
                 "shasum": ""
             },
             "require": {
@@ -1820,7 +1820,7 @@
                 "laravel",
                 "testing"
             ],
-            "time": "2017-03-15T16:06:40+00:00"
+            "time": "2017-03-17T11:03:51+00:00"
         },
         {
             "name": "mockery/mockery",
