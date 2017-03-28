@@ -37,7 +37,7 @@ class Mutex
                     config('database.connections.mysql.username'),
                     config('database.connections.mysql.password'),
                     config('database.connections.mysql.host'),
-                    config('database.connections.mysql.port')
+                    config('database.connections.mysql.port', 3306)
                 );
 
             case 'redis':
