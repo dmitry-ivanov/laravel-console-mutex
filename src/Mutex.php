@@ -36,7 +36,8 @@ class Mutex
                 return new MySqlLock(
                     config('database.connections.mysql.username'),
                     config('database.connections.mysql.password'),
-                    config('database.connections.mysql.host')
+                    config('database.connections.mysql.host'),
+                    config('database.connections.mysql.port')
                 );
 
             case 'redis':
