@@ -13,6 +13,8 @@
 
 Prevents overlapping for Laravel console commands.
 
+![Example](doc/img/example.gif)
+
 ## Table of contents
 
 - [Requirements](#requirements)
@@ -50,10 +52,6 @@ Prevents overlapping for Laravel console commands.
         // ...
     }
     ```
-
-3. Now your command is protected against overlapping:
-
-    ![Example](doc/img/example.gif)
 
 ## Strategies
 
