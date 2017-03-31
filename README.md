@@ -53,7 +53,7 @@ Prevents overlapping for Laravel console commands.
 
 3. Now your command is protected against overlapping:
 
-    ![Example](doc/img/example-mov.gif)
+    ![Example](doc/img/example-mov-new.gif)
 
 ## Strategies
 
