@@ -45,7 +45,7 @@ Prevents overlapping for Laravel console commands.
     ```php
     use Illuminated\Console\WithoutOverlapping;
 
-    class MyProtectedCommand extends Command
+    class ExampleCommand extends Command
     {
         use WithoutOverlapping;
 
@@ -68,7 +68,7 @@ If your application is more complex and, for example, is deployed on a several n
 You can change mutex strategy by specifying `$mutexStrategy` field:
 
 ```php
-class MyProtectedCommand extends Command
+class ExampleCommand extends Command
 {
     use WithoutOverlapping;
 
@@ -81,7 +81,7 @@ class MyProtectedCommand extends Command
 Or by using `setMutexStrategy` method:
 
 ```php
-class MyProtectedCommand extends Command
+class ExampleCommand extends Command
 {
     use WithoutOverlapping;
 
@@ -106,7 +106,7 @@ timeout for a mutex, so it can wait for another command to finish it's execution
 You can change mutex timeout by specifying `$mutexTimeout` field:
 
 ```php
-class MyProtectedCommand extends Command
+class ExampleCommand extends Command
 {
     use WithoutOverlapping;
 
@@ -119,7 +119,7 @@ class MyProtectedCommand extends Command
 Or by using `setMutexTimeout` method:
 
 ```php
-class MyProtectedCommand extends Command
+class ExampleCommand extends Command
 {
     use WithoutOverlapping;
 
@@ -146,7 +146,7 @@ Sometimes it is useful to set common mutex for a several commands. You can easil
 By default, mutex name is generated based on a command's name and arguments. To change this, just override `getMutexName` method in your command:
 
 ```php
-class MyProtectedCommand extends Command
+class ExampleCommand extends Command
 {
     use WithoutOverlapping;
 
@@ -180,7 +180,7 @@ trait WithoutOverlapping
 If your command is overriding `initialize` method too, then you should call `initializeMutex` method by yourself:
 
 ```php
-class MyProtectedCommand extends Command
+class ExampleCommand extends Command
 {
     use WithoutOverlapping;
 
@@ -203,7 +203,7 @@ If you're using some other cool `illuminated/console-%` packages, well, then you
 For example, if you're trying to build [loggable command](https://github.com/dmitry-ivanov/laravel-console-logger), which is protected against overlapping:
 
 ```php
-class MyProtectedCommand extends Command
+class ExampleCommand extends Command
 {
     use Loggable;
     use WithoutOverlapping;
@@ -218,7 +218,7 @@ You'll get fatal error, the "traits conflict", because both of these traits are 
 But don't worry, solution is very simple. Override `initialize` method by yourself, and initialize traits in required order:
 
 ```php
-class MyProtectedCommand extends Command
+class ExampleCommand extends Command
 {
     use Loggable;
     use WithoutOverlapping;
