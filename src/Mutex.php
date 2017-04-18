@@ -7,10 +7,10 @@ use Illuminate\Console\Command;
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\MemcachedLock;
 use NinjaMutex\Lock\MySqlLock;
+use NinjaMutex\Lock\PhpRedisLock;
 use NinjaMutex\Lock\PredisRedisLock;
 use NinjaMutex\Mutex as Ninja;
 use Predis\Client;
-use Redis;
 
 class Mutex
 {
@@ -41,7 +41,7 @@ class Mutex
                 );
 
             case 'redis':
-                return new PredisRedisLock($this->getRedisClient());
+                return $this->getRedisLock(config('database.redis.client', 'predis'));
 
             case 'memcached':
                 return new MemcachedLock(Cache::getStore()->getMemcached());
@@ -52,12 +52,24 @@ class Mutex
         }
     }
 
-    public function getRedisClient()
+    /**
+     * @return Client|\Redis
+     */
+    public function getRedisClient($driver = 'predis')
     {
-        $connection = Redis::connection();
+        $connection = \Illuminate\Support\Facades\Redis::connection();
 
-        /* @laravel-versions */
-        $redisClient = ($connection instanceof Client) ? $connection : $connection->client();
+        switch ($driver) {
+            case 'phpredis':
+                /* @laravel-versions */
+                $redisClient = ($connection instanceof \Redis) ? $connection : $connection->client();
+                break;
+            case 'predis':
+            default:
+                /* @laravel-versions */
+                $redisClient = ($connection instanceof Client) ? $connection : $connection->client();
+                break;
+        }
 
         return $redisClient;
     }
@@ -65,5 +77,16 @@ class Mutex
     public function __call($method, $parameters)
     {
         return call_user_func_array([$this->ninja, $method], $parameters);
+    }
+
+    private function getRedisLock($driver)
+    {
+        switch ($driver) {
+            case 'phpredis':
+                return new PhpRedisLock($this->getRedisClient($driver));
+            case 'predis':
+            default:
+                return new PredisRedisLock($this->getRedisClient($driver));
+        }
     }
 }
