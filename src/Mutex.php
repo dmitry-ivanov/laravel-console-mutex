@@ -25,6 +25,9 @@ class Mutex
         $this->ninja = new Ninja($command->getMutexName(), $this->strategy);
     }
 
+    /**
+     * @return FlockLock|MemcachedLock|MySqlLock|PhpRedisLock|PredisRedisLock
+     */
     public function getStrategy()
     {
         if (!empty($this->strategy)) {
@@ -79,6 +82,10 @@ class Mutex
         return call_user_func_array([$this->ninja, $method], $parameters);
     }
 
+    /**
+     * @param $driver
+     * @return PhpRedisLock|PredisRedisLock
+     */
     private function getRedisLock($driver)
     {
         switch ($driver) {
