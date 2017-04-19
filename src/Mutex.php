@@ -26,6 +26,9 @@ class Mutex
         $this->ninja = new Ninja($command->getMutexName(), $this->strategy);
     }
 
+    /**
+     * @return FlockLock|MemcachedLock|MySqlLock|PhpRedisLock|PredisRedisLock
+     */
     public function getStrategy()
     {
         if (!empty($this->strategy)) {
