@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\MemcachedLock;
 use NinjaMutex\Lock\MySqlLock;
+use NinjaMutex\Lock\PhpRedisLock;
 use NinjaMutex\Lock\PredisRedisLock;
 use NinjaMutex\Mutex as Ninja;
 use Predis\Client as PredisClient;
@@ -41,7 +42,7 @@ class Mutex
                 );
 
             case 'redis':
-                return $this->getRedisLock();
+                return $this->getRedisLock(config('database.redis.client', 'predis'));
 
             case 'memcached':
                 return new MemcachedLock(Cache::getStore()->getMemcached());
@@ -52,9 +53,16 @@ class Mutex
         }
     }
 
-    private function getRedisLock()
+    private function getRedisLock($client)
     {
-        return new PredisRedisLock($this->getPredisClient());
+        switch ($client) {
+            case 'phpredis':
+                return new PhpRedisLock(Redis::connection());
+
+            case 'predis':
+            default:
+                return new PredisRedisLock($this->getPredisClient());
+        }
     }
 
     public function getPredisClient()
