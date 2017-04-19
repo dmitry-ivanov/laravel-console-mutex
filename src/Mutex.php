@@ -60,7 +60,6 @@ class Mutex
                 return new PhpRedisLock($this->getPhpRedisClient());
 
             case 'predis':
-            default:
                 return new PredisRedisLock($this->getPredisClient());
         }
     }
