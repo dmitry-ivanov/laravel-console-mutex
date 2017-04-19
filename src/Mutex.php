@@ -9,7 +9,7 @@ use NinjaMutex\Lock\MemcachedLock;
 use NinjaMutex\Lock\MySqlLock;
 use NinjaMutex\Lock\PredisRedisLock;
 use NinjaMutex\Mutex as Ninja;
-use Predis\Client;
+use Predis\Client as PredisClient;
 use Redis;
 
 class Mutex
@@ -57,7 +57,7 @@ class Mutex
         $connection = Redis::connection();
 
         /* @laravel-versions */
-        $redisClient = ($connection instanceof Client) ? $connection : $connection->client();
+        $redisClient = ($connection instanceof PredisClient) ? $connection : $connection->client();
 
         return $redisClient;
     }
