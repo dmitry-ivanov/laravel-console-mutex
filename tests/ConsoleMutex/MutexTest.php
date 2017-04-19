@@ -3,6 +3,7 @@
 namespace Illuminated\Console\ConsoleMutex\Tests;
 
 use GenericCommand;
+use Illuminate\Redis\Connectors\PhpRedisConnector;
 use Illuminate\Support\Facades\Cache;
 use Illuminated\Console\Mutex;
 use Mockery;
@@ -23,7 +24,7 @@ class MutexTest extends TestCase
         parent::setUp();
 
         $this->command = Mockery::mock(GenericCommand::class)->makePartial();
-        $this->command->shouldReceive('argument')->withNoArgs()->once()->andReturn(['foo' => 'bar']);
+        $this->command->shouldReceive('argument')->withNoArgs()->andReturn(['foo' => 'bar']);
     }
 
     /** @test */
@@ -78,6 +79,11 @@ class MutexTest extends TestCase
     /** @test */
     public function it_supports_redis_strategy_with_phpredis_client()
     {
+        /* @laravel-versions */
+        if (!class_exists(PhpRedisConnector::class)) {
+            return;
+        }
+
         config(['database.redis.client' => 'phpredis']);
 
         $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('redis');
@@ -97,6 +103,11 @@ class MutexTest extends TestCase
     /** @test */
     public function it_has_get_phpredis_client_method_which_always_returns_an_instance_of_redis_class()
     {
+        /* @laravel-versions */
+        if (!class_exists(PhpRedisConnector::class)) {
+            return;
+        }
+
         config(['database.redis.client' => 'phpredis']);
 
         $mutex = new Mutex($this->command);
