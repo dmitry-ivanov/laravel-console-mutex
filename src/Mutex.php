@@ -4,6 +4,7 @@ namespace Illuminated\Console;
 
 use Cache;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Redis as RedisFacade;
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\MemcachedLock;
 use NinjaMutex\Lock\MySqlLock;
@@ -11,7 +12,6 @@ use NinjaMutex\Lock\PhpRedisLock;
 use NinjaMutex\Lock\PredisRedisLock;
 use NinjaMutex\Mutex as Ninja;
 use Predis\Client as PredisClient;
-use Redis;
 
 class Mutex
 {
@@ -57,7 +57,7 @@ class Mutex
     {
         switch ($client) {
             case 'phpredis':
-                return new PhpRedisLock(Redis::connection());
+                return new PhpRedisLock($this->getPhpRedisClient());
 
             case 'predis':
             default:
@@ -65,9 +65,14 @@ class Mutex
         }
     }
 
+    public function getPhpRedisClient()
+    {
+        return RedisFacade::connection()->client();
+    }
+
     public function getPredisClient()
     {
-        $connection = Redis::connection();
+        $connection = RedisFacade::connection();
 
         /* @laravel-versions */
         $predisClient = ($connection instanceof PredisClient) ? $connection : $connection->client();
