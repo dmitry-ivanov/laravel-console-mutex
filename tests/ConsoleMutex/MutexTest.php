@@ -12,6 +12,7 @@ use NinjaMutex\Lock\MySqlLock;
 use NinjaMutex\Lock\PhpRedisLock;
 use NinjaMutex\Lock\PredisRedisLock;
 use Predis\Client as PredisClient;
+use Redis;
 
 class MutexTest extends TestCase
 {
@@ -91,6 +92,15 @@ class MutexTest extends TestCase
     {
         $mutex = new Mutex($this->command);
         $this->assertInstanceOf(PredisClient::class, $mutex->getPredisClient());
+    }
+
+    /** @test */
+    public function it_has_get_phpredis_client_method_which_always_returns_an_instance_of_redis_class()
+    {
+        config(['database.redis.client' => 'phpredis']);
+
+        $mutex = new Mutex($this->command);
+        $this->assertInstanceOf(Redis::class, $mutex->getPhpRedisClient());
     }
 
     /** @test */
