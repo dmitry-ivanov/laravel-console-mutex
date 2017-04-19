@@ -9,6 +9,7 @@ use Mockery;
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\MemcachedLock;
 use NinjaMutex\Lock\MySqlLock;
+use NinjaMutex\Lock\PhpRedisLock;
 use NinjaMutex\Lock\PredisRedisLock;
 use Predis\Client as PredisClient;
 
@@ -64,12 +65,24 @@ class MutexTest extends TestCase
     }
 
     /** @test */
-    public function it_supports_redis_strategy()
+    public function it_supports_redis_strategy_with_predis_client_by_default()
     {
         $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('redis');
 
         $mutex = new Mutex($this->command);
         $expectedStrategy = new PredisRedisLock($mutex->getPredisClient());
+        $this->assertEquals($expectedStrategy, $mutex->getStrategy());
+    }
+
+    /** @test */
+    public function it_supports_redis_strategy_with_phpredis_client()
+    {
+        config(['database.redis.client' => 'phpredis']);
+
+        $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('redis');
+
+        $mutex = new Mutex($this->command);
+        $expectedStrategy = new PhpRedisLock($mutex->getPhpRedisClient());
         $this->assertEquals($expectedStrategy, $mutex->getStrategy());
     }
 
