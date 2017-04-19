@@ -64,13 +64,6 @@ class MutexTest extends TestCase
     }
 
     /** @test */
-    public function it_has_get_predis_client_method()
-    {
-        $mutex = new Mutex($this->command);
-        $this->assertInstanceOf(PredisClient::class, $mutex->getPredisClient());
-    }
-
-    /** @test */
     public function it_supports_redis_strategy()
     {
         $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('redis');
@@ -78,6 +71,13 @@ class MutexTest extends TestCase
         $mutex = new Mutex($this->command);
         $expectedStrategy = new PredisRedisLock($mutex->getPredisClient());
         $this->assertEquals($expectedStrategy, $mutex->getStrategy());
+    }
+
+    /** @test */
+    public function it_has_get_predis_client_method_which_always_returns_an_instance_of_predis_client_class()
+    {
+        $mutex = new Mutex($this->command);
+        $this->assertInstanceOf(PredisClient::class, $mutex->getPredisClient());
     }
 
     /** @test */
