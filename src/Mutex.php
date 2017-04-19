@@ -70,9 +70,9 @@ class Mutex
         $connection = Redis::connection();
 
         /* @laravel-versions */
-        $redisClient = ($connection instanceof PredisClient) ? $connection : $connection->client();
+        $predisClient = ($connection instanceof PredisClient) ? $connection : $connection->client();
 
-        return $redisClient;
+        return $predisClient;
     }
 
     public function __call($method, $parameters)
