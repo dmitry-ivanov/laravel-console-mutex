@@ -41,7 +41,7 @@ class Mutex
                 );
 
             case 'redis':
-                return new PredisRedisLock($this->getRedisClient());
+                return new PredisRedisLock($this->getPredisClient());
 
             case 'memcached':
                 return new MemcachedLock(Cache::getStore()->getMemcached());
@@ -52,7 +52,7 @@ class Mutex
         }
     }
 
-    public function getRedisClient()
+    public function getPredisClient()
     {
         $connection = Redis::connection();
 
