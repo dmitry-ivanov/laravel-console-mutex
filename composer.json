@@ -20,10 +20,9 @@
         "mockery/mockery": "^0.9",
         "orchestra/testbench": "^3.1",
         "illuminated/testing-tools": "^0.6",
-        "predis/predis": "^1.1"
-    },
-    "suggest" : {
-        "predis/predis": "If you want to use `redis` strategy."
+        "predis/predis": "^1.1",
+        "ext-pdo_mysql": "*",
+        "ext-redis": "*"
     },
     "autoload": {
         "psr-4": {
