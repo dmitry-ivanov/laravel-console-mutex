@@ -4,13 +4,14 @@ namespace Illuminated\Console;
 
 use Cache;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Redis as RedisFacade;
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\MemcachedLock;
 use NinjaMutex\Lock\MySqlLock;
 use NinjaMutex\Lock\PhpRedisLock;
 use NinjaMutex\Lock\PredisRedisLock;
 use NinjaMutex\Mutex as Ninja;
-use Predis\Client;
+use Predis\Client as PredisClient;
 
 class Mutex
 {
@@ -55,45 +56,32 @@ class Mutex
         }
     }
 
-    /**
-     * @return Client|\Redis
-     */
-    public function getRedisClient($driver = 'predis')
+    private function getRedisLock($client)
     {
-        $connection = \Illuminate\Support\Facades\Redis::connection();
-
-        switch ($driver) {
-            case 'phpredis':
-                /* @laravel-versions */
-                $redisClient = ($connection instanceof \Redis) ? $connection : $connection->client();
-                break;
-            case 'predis':
-            default:
-                /* @laravel-versions */
-                $redisClient = ($connection instanceof Client) ? $connection : $connection->client();
-                break;
+        if ($client === 'phpredis') {
+            return new PhpRedisLock($this->getPhpRedisClient());
         }
 
-        return $redisClient;
+        return new PredisRedisLock($this->getPredisClient());
+    }
+
+    public function getPhpRedisClient()
+    {
+        return RedisFacade::connection()->client();
+    }
+
+    public function getPredisClient()
+    {
+        $connection = RedisFacade::connection();
+
+        /* @laravel-versions */
+        $predisClient = ($connection instanceof PredisClient) ? $connection : $connection->client();
+
+        return $predisClient;
     }
 
     public function __call($method, $parameters)
     {
         return call_user_func_array([$this->ninja, $method], $parameters);
-    }
-
-    /**
-     * @param $driver
-     * @return PhpRedisLock|PredisRedisLock
-     */
-    private function getRedisLock($driver)
-    {
-        switch ($driver) {
-            case 'phpredis':
-                return new PhpRedisLock($this->getRedisClient($driver));
-            case 'predis':
-            default:
-                return new PredisRedisLock($this->getRedisClient($driver));
-        }
     }
 }
