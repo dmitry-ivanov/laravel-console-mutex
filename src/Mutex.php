@@ -55,13 +55,11 @@ class Mutex
 
     private function getRedisLock($client)
     {
-        switch ($client) {
-            case 'phpredis':
-                return new PhpRedisLock($this->getPhpRedisClient());
-
-            case 'predis':
-                return new PredisRedisLock($this->getPredisClient());
+        if ($client === 'phpredis') {
+            return new PhpRedisLock($this->getPhpRedisClient());
         }
+
+        return new PredisRedisLock($this->getPredisClient());
     }
 
     public function getPhpRedisClient()

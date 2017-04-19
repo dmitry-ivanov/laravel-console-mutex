@@ -66,7 +66,7 @@ class MutexTest extends TestCase
     }
 
     /** @test */
-    public function it_supports_redis_strategy_with_predis_client()
+    public function it_supports_redis_strategy_with_predis_client_which_is_default()
     {
         $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('redis');
 
