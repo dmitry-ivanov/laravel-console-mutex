@@ -41,7 +41,7 @@ class Mutex
                 );
 
             case 'redis':
-                return new PredisRedisLock($this->getPredisClient());
+                return $this->getRedisLock();
 
             case 'memcached':
                 return new MemcachedLock(Cache::getStore()->getMemcached());
@@ -50,6 +50,11 @@ class Mutex
             default:
                 return new FlockLock(storage_path('app'));
         }
+    }
+
+    private function getRedisLock()
+    {
+        return new PredisRedisLock($this->getPredisClient());
     }
 
     public function getPredisClient()
