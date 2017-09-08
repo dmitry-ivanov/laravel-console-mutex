@@ -3,17 +3,14 @@
 namespace Illuminated\Console\ConsoleMutex\Tests;
 
 use GenericCommand;
-use Illuminate\Redis\Connectors\PhpRedisConnector;
 use Illuminate\Support\Facades\Cache;
 use Illuminated\Console\Mutex;
 use Mockery;
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\MemcachedLock;
 use NinjaMutex\Lock\MySqlLock;
-use NinjaMutex\Lock\PhpRedisLock;
 use NinjaMutex\Lock\PredisRedisLock;
 use Predis\Client as PredisClient;
-use Redis;
 
 class MutexTest extends TestCase
 {
@@ -77,41 +74,10 @@ class MutexTest extends TestCase
     }
 
     /** @test */
-    public function it_supports_redis_strategy_with_phpredis_client()
-    {
-        /* @laravel-versions */
-        if (!class_exists(PhpRedisConnector::class)) {
-            return;
-        }
-
-        config(['database.redis.client' => 'phpredis']);
-
-        $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('redis');
-
-        $mutex = new Mutex($this->command);
-        $expectedStrategy = new PhpRedisLock($mutex->getPhpRedisClient());
-        $this->assertEquals($expectedStrategy, $mutex->getStrategy());
-    }
-
-    /** @test */
     public function it_has_get_predis_client_method_which_always_returns_an_instance_of_predis_client_class()
     {
         $mutex = new Mutex($this->command);
         $this->assertInstanceOf(PredisClient::class, $mutex->getPredisClient());
-    }
-
-    /** @test */
-    public function it_has_get_phpredis_client_method_which_always_returns_an_instance_of_redis_class()
-    {
-        /* @laravel-versions */
-        if (!class_exists(PhpRedisConnector::class)) {
-            return;
-        }
-
-        config(['database.redis.client' => 'phpredis']);
-
-        $mutex = new Mutex($this->command);
-        $this->assertInstanceOf(Redis::class, $mutex->getPhpRedisClient());
     }
 
     /** @test */
