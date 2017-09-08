@@ -11,15 +11,15 @@
     ],
     "require": {
         "php": ">=5.5.9",
-        "illuminate/support": "5.1.*",
-        "illuminate/console": "5.1.*",
+        "illuminate/support": "5.2.*",
+        "illuminate/console": "5.2.*",
         "arvenil/ninja-mutex": "^0.6"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.0",
         "mockery/mockery": "^0.9",
-        "orchestra/testbench": "3.1.*",
-        "illuminated/testing-tools": "5.1.*",
+        "orchestra/testbench": "3.2.*",
+        "illuminated/testing-tools": "5.2.*",
         "predis/predis": "^1.0",
         "ext-pdo_mysql": "*",
         "ext-redis": "*"
