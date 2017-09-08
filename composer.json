@@ -11,16 +11,16 @@
     ],
     "require": {
         "php": ">=5.5.9",
-        "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*",
-        "illuminate/console": "5.1.*|5.2.*|5.3.*|5.4.*",
+        "illuminate/support": "5.1.*",
+        "illuminate/console": "5.1.*",
         "arvenil/ninja-mutex": "^0.6"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.0",
         "mockery/mockery": "^0.9",
-        "orchestra/testbench": "^3.1",
-        "illuminated/testing-tools": "^0.6",
-        "predis/predis": "^1.1",
+        "orchestra/testbench": "3.1.*",
+        "illuminated/testing-tools": "5.1.*",
+        "predis/predis": "^1.0",
         "ext-pdo_mysql": "*",
         "ext-redis": "*"
     },
