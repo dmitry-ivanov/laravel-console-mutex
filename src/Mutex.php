@@ -11,7 +11,6 @@ use NinjaMutex\Lock\MySqlLock;
 use NinjaMutex\Lock\PhpRedisLock;
 use NinjaMutex\Lock\PredisRedisLock;
 use NinjaMutex\Mutex as Ninja;
-use Predis\Client as PredisClient;
 
 class Mutex
 {
@@ -69,12 +68,7 @@ class Mutex
 
     public function getPredisClient()
     {
-        $connection = RedisFacade::connection();
-
-        /* @laravel-versions */
-        $predisClient = ($connection instanceof PredisClient) ? $connection : $connection->client();
-
-        return $predisClient;
+        return RedisFacade::connection();
     }
 
     public function __call($method, $parameters)
