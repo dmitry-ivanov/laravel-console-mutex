@@ -52,6 +52,11 @@ trait WithoutOverlapping
         return "icmutex-{$name}-" . md5($arguments);
     }
 
+    public function getMutexFileStorage()
+    {
+        return storage_path('app');
+    }
+
     public function releaseMutexLock(Mutex $mutex)
     {
         $mutex->releaseLock();
