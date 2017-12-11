@@ -48,7 +48,7 @@ class Mutex
 
             case 'file':
             default:
-                return new FlockLock(storage_path('app'));
+                return new FlockLock($this->command->getMutexFileStorage());
         }
     }
 
