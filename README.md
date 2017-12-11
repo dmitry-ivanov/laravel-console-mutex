@@ -22,6 +22,7 @@ Prevents overlapping for Laravel console commands.
 - [Advanced](#advanced)
   - [Set custom timeout](#set-custom-timeout)
   - [Handle several commands](#handle-several-commands)
+  - [Custom mutex file storage](#custom-mutex-file-storage)
 - [Troubleshooting](#troubleshooting)
   - [Trait included, but nothing happens?](#trait-included-but-nothing-happens)
   - [Several traits conflict?](#several-traits-conflict)
