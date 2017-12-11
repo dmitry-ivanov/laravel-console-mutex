@@ -153,6 +153,25 @@ class ExampleCommand extends Command
 }
 ```
 
+### Custom mutex file storage
+
+If you're using `file` strategy, mutex files will be stored at `storage/app` folder, by default. However, you can change storage
+folder by overriding `getMutexFileStorage` method in your command:
+
+```php
+class ExampleCommand extends Command
+{
+    use WithoutOverlapping;
+
+    public function getMutexFileStorage()
+    {
+        return storage_path('my/custom/path');
+    }
+
+    // ...
+}
+```
+
 ## Troubleshooting
 
 ### Trait included, but nothing happens?
