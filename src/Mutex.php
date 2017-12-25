@@ -12,6 +12,9 @@ use NinjaMutex\Lock\PhpRedisLock;
 use NinjaMutex\Lock\PredisRedisLock;
 use NinjaMutex\Mutex as Ninja;
 
+/**
+ * @mixin \NinjaMutex\Mutex
+ */
 class Mutex
 {
     private $command;
