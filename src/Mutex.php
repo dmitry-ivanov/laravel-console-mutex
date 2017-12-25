@@ -13,7 +13,7 @@ use NinjaMutex\Lock\PredisRedisLock;
 use NinjaMutex\Mutex as Ninja;
 
 /**
- * @mixin \NinjaMutex\Mutex
+ * @mixin Ninja
  */
 class Mutex
 {
