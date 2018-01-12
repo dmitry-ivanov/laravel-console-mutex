@@ -40,7 +40,7 @@ Prevents overlapping for Laravel console commands.
 1. Install package through `composer`:
 
     ```shell
-    composer require illuminated/console-mutex
+    composer require "illuminated/console-mutex:5.5.*"
     ```
 
 2. Use `Illuminated\Console\WithoutOverlapping` trait:
