@@ -13,6 +13,8 @@
 
 Prevents overlapping for Laravel console commands.
 
+![Example](doc/img/example.gif)
+
 | Laravel | Console Mutex                                                            |
 | ------- | :----------------------------------------------------------------------: |
 | 5.1.*   | [5.1.*](https://github.com/dmitry-ivanov/laravel-console-mutex/tree/5.1) |
@@ -20,8 +22,6 @@ Prevents overlapping for Laravel console commands.
 | 5.3.*   | [5.3.*](https://github.com/dmitry-ivanov/laravel-console-mutex/tree/5.3) |
 | 5.4.*   | [5.4.*](https://github.com/dmitry-ivanov/laravel-console-mutex/tree/5.4) |
 | 5.5.*   | [5.5.*](https://github.com/dmitry-ivanov/laravel-console-mutex/tree/5.5) |
-
-![Example](doc/img/example.gif)
 
 ## Table of contents
 
