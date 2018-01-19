@@ -1,3 +1,0 @@
-rules:
-    php.use_exit_function:
-        enabled: false
