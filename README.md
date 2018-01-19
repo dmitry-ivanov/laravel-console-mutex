@@ -1,7 +1,5 @@
 # Laravel Console Mutex
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/e4083afa-8ca9-4ac0-8be8-9bfadcb05fa7/big.png)](https://insight.sensiolabs.com/projects/e4083afa-8ca9-4ac0-8be8-9bfadcb05fa7)
-
 [![StyleCI](https://styleci.io/repos/59570052/shield?branch=5.2&style=flat)](https://styleci.io/repos/59570052)
 [![Build Status](https://travis-ci.org/dmitry-ivanov/laravel-console-mutex.svg?branch=5.2)](https://travis-ci.org/dmitry-ivanov/laravel-console-mutex)
 [![Coverage Status](https://coveralls.io/repos/github/dmitry-ivanov/laravel-console-mutex/badge.svg?branch=5.2)](https://coveralls.io/github/dmitry-ivanov/laravel-console-mutex?branch=5.2)
