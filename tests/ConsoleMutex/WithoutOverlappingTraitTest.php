@@ -3,7 +3,6 @@
 namespace Illuminated\Console\ConsoleMutex\Tests;
 
 use GenericCommand;
-use Mockery;
 use MysqlStrategyCommand;
 use NullTimeoutCommand;
 use RuntimeException;
@@ -71,9 +70,9 @@ class WithoutOverlappingTraitTest extends TestCase
     /** @test */
     public function it_generates_mutex_name_based_on_the_command_name_and_arguments()
     {
-        $command = Mockery::mock(GenericCommand::class)->makePartial();
-        $command->shouldReceive('getName')->withNoArgs()->once()->andReturn('icm:generic');
-        $command->shouldReceive('argument')->withNoArgs()->once()->andReturn(['foo' => 'bar', 'baz' => 'faz']);
+        $command = mock(GenericCommand::class)->makePartial();
+        $command->expects()->getName()->andReturn('icm:generic');
+        $command->expects()->argument()->andReturn(['foo' => 'bar', 'baz' => 'faz']);
 
         $md5 = md5(json_encode(['foo' => 'bar', 'baz' => 'faz']));
         $this->assertEquals("icmutex-icm:generic-{$md5}", $command->getMutexName());
@@ -86,9 +85,9 @@ class WithoutOverlappingTraitTest extends TestCase
      */
     public function it_allows_to_run_command_if_there_is_no_other_running_instances()
     {
-        $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
-        $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(true);
-        $mutex->shouldReceive('releaseLock')->withNoArgs();
+        $mutex = mock('overload:Illuminated\Console\Mutex');
+        $mutex->expects()->acquireLock(0)->andReturn(true);
+        $mutex->allows()->releaseLock();
 
         $this->artisan('icm:generic');
     }
@@ -100,11 +99,10 @@ class WithoutOverlappingTraitTest extends TestCase
      */
     public function it_blocks_if_trying_to_run_another_instance_of_the_command()
     {
-        $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
-        $mutex->shouldReceive('acquireLock')->with(0)->once()->andReturn(false);
+        $mutex = mock('overload:Illuminated\Console\Mutex');
+        $mutex->expects()->acquireLock(0)->andReturn(false);
 
-        $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessage('Command is running now!');
+        $this->willSeeException(RuntimeException::class, 'Command is running now!');
 
         $this->artisan('icm:generic');
     }
@@ -116,8 +114,8 @@ class WithoutOverlappingTraitTest extends TestCase
      */
     public function it_is_releasing_the_lock_after_command_execution()
     {
-        $mutex = Mockery::mock('overload:Illuminated\Console\Mutex');
-        $mutex->shouldReceive('releaseLock')->withNoArgs()->once();
+        $mutex = mock('overload:Illuminated\Console\Mutex');
+        $mutex->expects()->releaseLock();
 
         $command = new GenericCommand;
         $command->releaseMutexLock($mutex);
