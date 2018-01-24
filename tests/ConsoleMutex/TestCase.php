@@ -5,6 +5,9 @@ namespace Illuminated\Console\ConsoleMutex\Tests;
 use Illuminate\Contracts\Console\Kernel as KernelContract;
 use Illuminated\Testing\TestingTools;
 use Kernel;
+use Mockery;
+
+Mockery::globalHelpers();
 
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
