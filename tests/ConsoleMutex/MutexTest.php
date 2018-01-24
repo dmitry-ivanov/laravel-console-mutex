@@ -5,7 +5,6 @@ namespace Illuminated\Console\ConsoleMutex\Tests;
 use GenericCommand;
 use Illuminate\Support\Facades\Cache;
 use Illuminated\Console\Mutex;
-use Mockery;
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\MemcachedLock;
 use NinjaMutex\Lock\MySqlLock;
@@ -22,8 +21,8 @@ class MutexTest extends TestCase
     {
         parent::setUp();
 
-        $this->command = Mockery::mock(GenericCommand::class)->makePartial();
-        $this->command->shouldReceive('argument')->withNoArgs()->andReturn(['foo' => 'bar']);
+        $this->command = mock(GenericCommand::class)->makePartial();
+        $this->command->expects()->argument()->andReturn(['foo' => 'bar']);
     }
 
     /** @test */
@@ -43,7 +42,7 @@ class MutexTest extends TestCase
     /** @test */
     public function it_has_default_strategy_which_is_file()
     {
-        $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('foobar');
+        $this->command->expects()->getMutexStrategy()->andReturn('foobar');
 
         $mutex = new Mutex($this->command);
         $expectedStrategy = new FlockLock(storage_path('app'));
@@ -53,7 +52,7 @@ class MutexTest extends TestCase
     /** @test */
     public function it_supports_mysql_strategy()
     {
-        $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('mysql');
+        $this->command->expects()->getMutexStrategy()->andReturn('mysql');
 
         $mutex = new Mutex($this->command);
         $expectedStrategy = new MySqlLock(
@@ -68,7 +67,7 @@ class MutexTest extends TestCase
     /** @test */
     public function it_supports_redis_strategy_with_predis_client_which_is_default()
     {
-        $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('redis');
+        $this->command->expects()->getMutexStrategy()->andReturn('redis');
 
         $mutex = new Mutex($this->command);
         $expectedStrategy = new PredisRedisLock($mutex->getPredisClient());
@@ -80,7 +79,7 @@ class MutexTest extends TestCase
     {
         config(['database.redis.client' => 'phpredis']);
 
-        $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('redis');
+        $this->command->expects()->getMutexStrategy()->andReturn('redis');
 
         $mutex = new Mutex($this->command);
         $expectedStrategy = new PhpRedisLock($mutex->getPhpRedisClient());
@@ -108,7 +107,8 @@ class MutexTest extends TestCase
     {
         Cache::shouldReceive('getStore')->withNoArgs()->twice()->andReturnSelf();
         Cache::shouldReceive('getMemcached')->withNoArgs()->twice()->andReturnSelf();
-        $this->command->shouldReceive('getMutexStrategy')->withNoArgs()->once()->andReturn('memcached');
+
+        $this->command->expects()->getMutexStrategy()->andReturn('memcached');
 
         $mutex = new Mutex($this->command);
         $expectedStrategy = new MemcachedLock(Cache::getStore()->getMemcached());
@@ -122,8 +122,8 @@ class MutexTest extends TestCase
      */
     public function it_delegates_public_method_calls_to_ninja_mutex()
     {
-        $ninja = Mockery::mock('overload:NinjaMutex\Mutex');
-        $ninja->shouldReceive('isLocked')->once();
+        $ninja = mock('overload:NinjaMutex\Mutex');
+        $ninja->expects()->isLocked();
 
         $mutex = new Mutex($this->command);
         $mutex->isLocked();
