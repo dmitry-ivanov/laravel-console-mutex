@@ -236,8 +236,8 @@ class ExampleCommand extends Command
 }
 ```
 
-You'll get fatal error, the "traits conflict", because both of these traits are overriding `initialize` method:
->If two traits insert a method with the same name, a fatal error is produced, if the conflict is not explicitly resolved.
+You'll get the fatal error - the traits conflict, because of both of these traits are overriding `initialize` method:
+> If two traits insert a method with the same name, a fatal error is produced, if the conflict is not explicitly resolved.
 
 But don't worry, solution is very simple. Override `initialize` method by yourself, and initialize traits in required order:
 
