@@ -140,7 +140,7 @@ There are three possible options for `$mutexTimeout` field:
 
 - `0` - check without waiting (default);
 - `{milliseconds}` - check, and wait for a maximum of milliseconds specified;
-- `null` - wait, till running command finish it's execution;
+- `null` - wait, till running command finish its execution;
 
 ### Handle several commands
 
