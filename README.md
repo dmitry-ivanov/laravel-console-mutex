@@ -9,7 +9,7 @@
 [![Total Downloads](https://poser.pugx.org/illuminated/console-mutex/downloads)](https://packagist.org/packages/illuminated/console-mutex)
 [![License](https://poser.pugx.org/illuminated/console-mutex/license)](https://packagist.org/packages/illuminated/console-mutex)
 
-Prevents overlapping for Laravel console commands.
+The mutex for Laravel console commands.
 
 | Laravel | Console Mutex                                                            |
 | ------- | :----------------------------------------------------------------------: |
@@ -64,10 +64,10 @@ Overlapping can be prevented by various strategies:
 - `redis`
 - `memcached`
 
-Default `file` strategy is fine for a small applications, which are deployed on a single server.
-If your application is more complex and, for example, is deployed on a several nodes, then you probably would like to use some other mutex strategy.
+Default `file` strategy is fine for small applications, which are deployed on a single server.
+If your application is more complex and deployed on several nodes, then you probably would like to use another mutex strategy.
 
-You can change mutex strategy by specifying `$mutexStrategy` field:
+You can change the mutex strategy by specifying `$mutexStrategy` field:
 
 ```php
 class ExampleCommand extends Command
@@ -102,10 +102,10 @@ class ExampleCommand extends Command
 
 ### Set custom timeout
 
-By default mutex is checking for a running command, and if it finds such, it just exits. However, you can manually set
-timeout for a mutex, so it can wait for another command to finish it's execution, instead of just quitting immediately.
+By default, the mutex is checking for a running command, and if it finds such, it just exits. However, you can manually
+set the timeout for a mutex, so it can wait for another command to finish its execution, instead of just quitting immediately.
 
-You can change mutex timeout by specifying `$mutexTimeout` field:
+You can change the mutex timeout by specifying `$mutexTimeout` field:
 
 ```php
 class ExampleCommand extends Command
@@ -140,12 +140,14 @@ There are three possible options for `$mutexTimeout` field:
 
 - `0` - check without waiting (default);
 - `{milliseconds}` - check, and wait for a maximum of milliseconds specified;
-- `null` - wait, till running command finish it's execution;
+- `null` - wait, till running command finish its execution;
 
 ### Handle several commands
 
-Sometimes it is useful to set common mutex for a several commands. You can easily achieve this by setting them the same mutex name.
-By default, mutex name is generated based on a command's name and arguments. To change this, just override `getMutexName` method in your command:
+Sometimes it is useful to set common mutex for several commands. You can easily achieve this by setting them the same mutex name.
+By default, mutex name is generated based on a command's name and arguments.
+
+To change this, override `getMutexName` method in your command:
 
 ```php
 class ExampleCommand extends Command
@@ -163,8 +165,9 @@ class ExampleCommand extends Command
 
 ### Custom mutex file storage
 
-If you're using `file` strategy, mutex files will be stored at `storage/app` folder, by default. However, you can change storage
-folder by overriding `getMutexFileStorage` method in your command:
+If you're using `file` strategy, mutex files will be stored in the `storage/app` folder, by default.
+
+You can change the storage folder by overriding `getMutexFileStorage` method in your command:
 
 ```php
 class ExampleCommand extends Command
@@ -220,7 +223,8 @@ class ExampleCommand extends Command
 
 ### Several traits conflict?
 
-If you're using some other cool `illuminated/console-%` packages, well, then you can find yourself getting "traits conflict".
+If you're using another `illuminated/console-%` package, then you can find yourself getting into the "traits conflict".
+
 For example, if you're trying to build [loggable command](https://github.com/dmitry-ivanov/laravel-console-logger), which is protected against overlapping:
 
 ```php
@@ -233,10 +237,10 @@ class ExampleCommand extends Command
 }
 ```
 
-You'll get fatal error, the "traits conflict", because both of these traits are overriding `initialize` method:
->If two traits insert a method with the same name, a fatal error is produced, if the conflict is not explicitly resolved.
+You'll get the fatal error - the traits conflict, because of both of these traits are overriding `initialize` method:
+> If two traits insert a method with the same name, a fatal error is produced, if the conflict is not explicitly resolved.
 
-But don't worry, solution is very simple. Override `initialize` method by yourself, and initialize traits in required order:
+Override `initialize` method by yourself, and initialize traits in required order:
 
 ```php
 class ExampleCommand extends Command
