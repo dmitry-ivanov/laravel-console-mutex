@@ -147,7 +147,7 @@ There are three possible options for `$mutexTimeout` field:
 Sometimes it is useful to set common mutex for several commands. You can easily achieve this by setting them the same mutex name.
 By default, mutex name is generated based on a command's name and arguments.
 
-To change this, just override `getMutexName` method in your command:
+To change this, override `getMutexName` method in your command:
 
 ```php
 class ExampleCommand extends Command
