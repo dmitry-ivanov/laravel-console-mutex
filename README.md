@@ -102,8 +102,8 @@ class ExampleCommand extends Command
 
 ### Set custom timeout
 
-By default mutex is checking for a running command, and if it finds such, it just exits. However, you can manually set
-timeout for a mutex, so it can wait for another command to finish it's execution, instead of just quitting immediately.
+By default, a mutex is checking for a running command, and if it finds such, it just exits. However, you can manually
+set timeout for a mutex, so it can wait for another command to finish its execution, instead of just quitting immediately.
 
 You can change mutex timeout by specifying `$mutexTimeout` field:
 
