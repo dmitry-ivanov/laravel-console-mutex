@@ -65,7 +65,7 @@ Overlapping can be prevented by various strategies:
 - `memcached`
 
 Default `file` strategy is fine for small applications, which are deployed on a single server.
-If your application is more complex and deployed on several nodes, then you probably would like to use some other mutex strategy.
+If your application is more complex and deployed on several nodes, then you probably would like to use another mutex strategy.
 
 You can change the mutex strategy by specifying `$mutexStrategy` field:
 
