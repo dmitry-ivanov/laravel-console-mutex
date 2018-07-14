@@ -223,7 +223,7 @@ class ExampleCommand extends Command
 
 ### Several traits conflict?
 
-If you're using some other `illuminated/console-%` packages, then you can find yourself getting traits conflict.
+If you're using some other `illuminated/console-%` packages, then you can find yourself getting into the "traits conflict".
 
 For example, if you're trying to build [loggable command](https://github.com/dmitry-ivanov/laravel-console-logger), which is protected against overlapping:
 
