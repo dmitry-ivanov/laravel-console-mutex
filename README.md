@@ -167,7 +167,7 @@ class ExampleCommand extends Command
 
 If you're using `file` strategy, mutex files will be stored at the `storage/app` folder, by default.
 
-You can change storage folder by overriding `getMutexFileStorage` method in your command:
+You can change the storage folder by overriding `getMutexFileStorage` method in your command:
 
 ```php
 class ExampleCommand extends Command
