@@ -165,7 +165,7 @@ class ExampleCommand extends Command
 
 ### Custom mutex file storage
 
-If you're using `file` strategy, mutex files will be stored at the `storage/app` folder, by default.
+If you're using `file` strategy, mutex files will be stored in the `storage/app` folder, by default.
 
 You can change the storage folder by overriding `getMutexFileStorage` method in your command:
 
