@@ -1,6 +1,6 @@
 {
     "name": "illuminated/console-mutex",
-    "description": "The mutex for Laravel console commands.",
+    "description": "Mutex for Laravel console commands.",
     "keywords": ["laravel", "console", "command", "mutex", "overlapping", "locker"],
     "license": "MIT",
     "authors": [
