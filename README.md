@@ -9,7 +9,7 @@
 [![Total Downloads](https://poser.pugx.org/illuminated/console-mutex/downloads)](https://packagist.org/packages/illuminated/console-mutex)
 [![License](https://poser.pugx.org/illuminated/console-mutex/license)](https://packagist.org/packages/illuminated/console-mutex)
 
-The mutex for Laravel console commands.
+Mutex for Laravel console commands.
 
 | Laravel | Console Mutex                                                            |
 | ------- | :----------------------------------------------------------------------: |
