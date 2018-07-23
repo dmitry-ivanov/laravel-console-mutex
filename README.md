@@ -1,5 +1,7 @@
 # Laravel Console Mutex
 
+[<img src="https://user-images.githubusercontent.com/1286821/43083932-4915853a-8ea0-11e8-8983-db9e0f04e772.png" alt="Become a Patron" width="160" />](https://www.patreon.com/illuminated)
+
 [![StyleCI](https://styleci.io/repos/59570052/shield?branch=master&style=flat)](https://styleci.io/repos/59570052)
 [![Build Status](https://travis-ci.org/dmitry-ivanov/laravel-console-mutex.svg?branch=master)](https://travis-ci.org/dmitry-ivanov/laravel-console-mutex)
 [![Coverage Status](https://coveralls.io/repos/github/dmitry-ivanov/laravel-console-mutex/badge.svg?branch=master)](https://coveralls.io/github/dmitry-ivanov/laravel-console-mutex?branch=master)
@@ -33,6 +35,7 @@ Mutex for Laravel console commands.
 - [Troubleshooting](#troubleshooting)
   - [Trait included, but nothing happens?](#trait-included-but-nothing-happens)
   - [Several traits conflict?](#several-traits-conflict)
+- [License](#license)
 
 ## Usage
 
@@ -257,3 +260,9 @@ class ExampleCommand extends Command
     // ...
 }
 ```
+
+## License
+
+The MIT License. Please see [License File](LICENSE) for more information.
+
+[<img src="https://user-images.githubusercontent.com/1286821/43086829-ff7c006e-8ea6-11e8-8b03-ecf97ca95b2e.png" alt="Support on Patreon" width="125" />](https://www.patreon.com/illuminated)
