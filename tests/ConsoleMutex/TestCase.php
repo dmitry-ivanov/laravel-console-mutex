@@ -13,6 +13,8 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
     use TestingTools;
 
+    public $mockConsoleOutput = false;
+
     protected function resolveApplicationConsoleKernel($app)
     {
         $app->singleton(KernelContract::class, Kernel::class);
