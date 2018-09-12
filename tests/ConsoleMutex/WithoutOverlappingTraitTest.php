@@ -3,10 +3,10 @@
 namespace Illuminated\Console\ConsoleMutex\Tests;
 
 use GenericCommand;
-use MysqlStrategyCommand;
-use NullTimeoutCommand;
-use RuntimeException;
 use TimeoutCommand;
+use RuntimeException;
+use NullTimeoutCommand;
+use MysqlStrategyCommand;
 
 class WithoutOverlappingTraitTest extends TestCase
 {
