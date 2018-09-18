@@ -40,7 +40,7 @@ Mutex for Laravel console commands.
 
 ## Usage
 
-1. Install package through `composer`:
+1. Install the package via Composer:
 
     ```shell
     composer require illuminated/console-mutex
