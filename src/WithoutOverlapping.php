@@ -1,8 +1,8 @@
 <?php
 
-namespace Illuminated\Console;
+namespace Illuminated\Console\Mutex;
 
-use RuntimeException;
+use Illuminated\Console\Mutex\Exceptions\RuntimeException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 

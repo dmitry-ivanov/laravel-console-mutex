@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminated\Console;
+namespace Illuminated\Console\Mutex;
 
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\MySqlLock;

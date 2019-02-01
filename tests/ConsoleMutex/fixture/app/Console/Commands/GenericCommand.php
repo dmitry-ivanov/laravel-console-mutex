@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Console\Command;
-use Illuminated\Console\WithoutOverlapping;
+use Illuminated\Console\Mutex\WithoutOverlapping;
 
 class GenericCommand extends Command
 {

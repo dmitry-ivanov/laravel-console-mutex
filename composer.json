@@ -13,7 +13,8 @@
         "php": "^7.1.3",
         "illuminate/support": "5.7.*",
         "illuminate/console": "5.7.*",
-        "arvenil/ninja-mutex": "^0.6"
+        "arvenil/ninja-mutex": "^0.6",
+        "ext-json": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0",
@@ -26,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Illuminated\\Console\\": "src/"
+            "Illuminated\\Console\\Mutex\\": "src/"
         }
     },
     "autoload-dev": {

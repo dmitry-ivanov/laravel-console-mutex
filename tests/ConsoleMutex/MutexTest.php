@@ -4,7 +4,7 @@ namespace Illuminated\Console\ConsoleMutex\Tests;
 
 use Redis;
 use GenericCommand;
-use Illuminated\Console\Mutex;
+use Illuminated\Console\Mutex\Mutex;
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\MySqlLock;
 use NinjaMutex\Lock\PhpRedisLock;
