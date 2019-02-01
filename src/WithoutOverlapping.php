@@ -2,9 +2,9 @@
 
 namespace Illuminated\Console\Mutex;
 
-use Illuminated\Console\Mutex\Exceptions\RuntimeException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Illuminated\Console\Mutex\Exceptions\RuntimeException;
 
 trait WithoutOverlapping
 {

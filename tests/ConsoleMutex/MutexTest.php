@@ -4,12 +4,12 @@ namespace Illuminated\Console\ConsoleMutex\Tests;
 
 use Redis;
 use GenericCommand;
-use Illuminated\Console\Mutex\Mutex;
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\MySqlLock;
 use NinjaMutex\Lock\PhpRedisLock;
 use NinjaMutex\Lock\MemcachedLock;
 use Predis\Client as PredisClient;
+use Illuminated\Console\Mutex\Mutex;
 use NinjaMutex\Lock\PredisRedisLock;
 use Illuminate\Support\Facades\Cache;
 
