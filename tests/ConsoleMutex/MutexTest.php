@@ -17,7 +17,7 @@ class MutexTest extends TestCase
 {
     private $command;
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
