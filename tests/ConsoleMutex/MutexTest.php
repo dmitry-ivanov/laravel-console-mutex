@@ -22,6 +22,7 @@ class MutexTest extends TestCase
         parent::setUp();
 
         $this->command = mock(GenericCommand::class)->makePartial();
+        $this->command->expects()->getName()->andReturn('icm:generic');
         $this->command->expects()->argument()->andReturn(['foo' => 'bar']);
     }
 
