@@ -2,15 +2,19 @@
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
          beStrictAboutTestsThatDoNotTestAnything="false"
+         beStrictAboutOutputDuringTests="true"
          bootstrap="vendor/autoload.php"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="false">
+         stopOnError="false"
+         stopOnFailure="false"
+         verbose="true"
+>
     <testsuites>
-        <testsuite name="main">
+        <testsuite name="Laravel Console Mutex Test Suite">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
