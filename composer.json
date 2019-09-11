@@ -1,8 +1,12 @@
 {
     "name": "illuminated/console-mutex",
     "description": "Mutex for Laravel console commands.",
-    "keywords": ["laravel", "console", "command", "mutex", "overlapping", "locker"],
+    "keywords": ["laravel", "console", "command", "mutex", "locker", "overlapping"],
     "license": "MIT",
+    "support": {
+        "issues": "https://github.com/dmitry-ivanov/laravel-console-mutex/issues",
+        "source": "https://github.com/dmitry-ivanov/laravel-console-mutex"
+    },
     "authors": [{
         "name": "Dmitry Ivanov",
         "email": "dmitry.g.ivanov@gmail.com"
@@ -33,5 +37,10 @@
             "Illuminated\\Console\\Tests\\": "tests/",
             "Illuminated\\Console\\Tests\\App\\": "tests/fixture/app/"
         }
-    }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
