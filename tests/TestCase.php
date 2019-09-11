@@ -1,10 +1,10 @@
 <?php
 
-namespace Illuminated\Console\ConsoleMutex\Tests;
+namespace Illuminated\Console\Tests;
 
-use Kernel;
 use Mockery;
 use Illuminated\Testing\TestingTools;
+use Illuminated\Console\Tests\App\Console\Kernel;
 use Illuminate\Contracts\Console\Kernel as KernelContract;
 
 Mockery::globalHelpers();

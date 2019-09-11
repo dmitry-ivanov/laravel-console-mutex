@@ -1,12 +1,12 @@
 <?php
 
-namespace Illuminated\Console\ConsoleMutex\Tests;
+namespace Illuminated\Console\Tests;
 
-use GenericCommand;
-use TimeoutCommand;
 use RuntimeException;
-use NullTimeoutCommand;
-use MysqlStrategyCommand;
+use Illuminated\Console\Tests\App\Console\Commands\GenericCommand;
+use Illuminated\Console\Tests\App\Console\Commands\TimeoutCommand;
+use Illuminated\Console\Tests\App\Console\Commands\NullTimeoutCommand;
+use Illuminated\Console\Tests\App\Console\Commands\MysqlStrategyCommand;
 
 class WithoutOverlappingTraitTest extends TestCase
 {

@@ -1,5 +1,7 @@
 <?php
 
+namespace Illuminated\Console\Tests\App\Console\Commands;
+
 use Illuminate\Console\Command;
 use Illuminated\Console\WithoutOverlapping;
 

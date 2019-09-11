@@ -1,9 +1,8 @@
 <?php
 
-namespace Illuminated\Console\ConsoleMutex\Tests;
+namespace Illuminated\Console\Tests;
 
 use Redis;
-use GenericCommand;
 use Illuminated\Console\Mutex;
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\MySqlLock;
@@ -12,6 +11,7 @@ use NinjaMutex\Lock\MemcachedLock;
 use Predis\Client as PredisClient;
 use NinjaMutex\Lock\PredisRedisLock;
 use Illuminate\Support\Facades\Cache;
+use Illuminated\Console\Tests\App\Console\Commands\GenericCommand;
 
 class MutexTest extends TestCase
 {

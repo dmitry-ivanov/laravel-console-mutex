@@ -9,6 +9,7 @@
     }],
     "require": {
         "php": "^7.1.3",
+        "ext-json": "*",
         "illuminate/support": "5.8.*",
         "illuminate/console": "5.8.*",
         "arvenil/ninja-mutex": "^0.6"
@@ -28,9 +29,9 @@
         }
     },
     "autoload-dev": {
-        "classmap": [
-            "tests/ConsoleMutex/TestCase.php",
-            "tests/ConsoleMutex/fixture/app"
-        ]
+        "psr-4": {
+            "Illuminated\\Console\\Tests\\": "tests/",
+            "Illuminated\\Console\\Tests\\App\\": "tests/fixture/app/"
+        }
     }
 }
