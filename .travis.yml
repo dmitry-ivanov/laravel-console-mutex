@@ -3,6 +3,11 @@ language: php
 php:
   - 7.1
   - 7.2
+  - 7.3
+
+cache:
+  directories:
+    - $HOME/.composer/cache
 
 services:
   - redis-server
@@ -11,10 +16,9 @@ before_install:
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 install:
-  - composer update
-  - composer require php-coveralls/php-coveralls --dev
+  - travis_retry composer install --no-interaction --prefer-dist
+  - travis_retry composer require --no-interaction --prefer-dist --dev php-coveralls/php-coveralls
 
 script: vendor/bin/phpunit --verbose --coverage-clover build/logs/clover.xml
 
-after_script:
-  - php vendor/bin/php-coveralls -v
+after_success: php vendor/bin/php-coveralls --verbose
