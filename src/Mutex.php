@@ -44,7 +44,7 @@ class Mutex
                 );
 
             case 'redis':
-                return $this->getRedisLock(config('database.redis.client', 'predis'));
+                return $this->getRedisLock(config('database.redis.client', 'phpredis'));
 
             case 'memcached':
                 return new MemcachedLock(Cache::getStore()->getMemcached());

@@ -66,20 +66,8 @@ class MutexTest extends TestCase
     }
 
     /** @test */
-    public function it_supports_redis_strategy_with_predis_client_which_is_default()
+    public function it_supports_redis_strategy_with_phpredis_client_which_is_default()
     {
-        $this->command->expects()->getMutexStrategy()->andReturn('redis');
-
-        $mutex = new Mutex($this->command);
-        $expectedStrategy = new PredisRedisLock($mutex->getPredisClient());
-        $this->assertEquals($expectedStrategy, $mutex->getStrategy());
-    }
-
-    /** @test */
-    public function it_supports_redis_strategy_with_phpredis_client()
-    {
-        config(['database.redis.client' => 'phpredis']);
-
         $this->command->expects()->getMutexStrategy()->andReturn('redis');
 
         $mutex = new Mutex($this->command);
@@ -88,19 +76,31 @@ class MutexTest extends TestCase
     }
 
     /** @test */
-    public function it_has_get_predis_client_method_which_always_returns_an_instance_of_predis_client_class()
+    public function it_supports_redis_strategy_with_predis_client()
     {
+        config(['database.redis.client' => 'predis']);
+
+        $this->command->expects()->getMutexStrategy()->andReturn('redis');
+
         $mutex = new Mutex($this->command);
-        $this->assertInstanceOf(PredisClient::class, $mutex->getPredisClient());
+        $expectedStrategy = new PredisRedisLock($mutex->getPredisClient());
+        $this->assertEquals($expectedStrategy, $mutex->getStrategy());
     }
 
     /** @test */
     public function it_has_get_phpredis_client_method_which_always_returns_an_instance_of_redis_class()
     {
-        config(['database.redis.client' => 'phpredis']);
-
         $mutex = new Mutex($this->command);
         $this->assertInstanceOf(Redis::class, $mutex->getPhpRedisClient());
+    }
+
+    /** @test */
+    public function it_has_get_predis_client_method_which_always_returns_an_instance_of_predis_client_class()
+    {
+        config(['database.redis.client' => 'predis']);
+
+        $mutex = new Mutex($this->command);
+        $this->assertInstanceOf(PredisClient::class, $mutex->getPredisClient());
     }
 
     /** @test */
