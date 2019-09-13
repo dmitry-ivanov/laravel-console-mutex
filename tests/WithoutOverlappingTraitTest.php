@@ -2,7 +2,7 @@
 
 namespace Illuminated\Console\Tests;
 
-use RuntimeException;
+use Illuminated\Console\MutexRuntimeException;
 use Illuminated\Console\Tests\App\Console\Commands\GenericCommand;
 use Illuminated\Console\Tests\App\Console\Commands\TimeoutCommand;
 use Illuminated\Console\Tests\App\Console\Commands\NullTimeoutCommand;
@@ -102,7 +102,7 @@ class WithoutOverlappingTraitTest extends TestCase
         $mutex = mock('overload:Illuminated\Console\Mutex');
         $mutex->expects()->acquireLock(0)->andReturn(false);
 
-        $this->willSeeException(RuntimeException::class, 'Command is running now!');
+        $this->willSeeException(MutexRuntimeException::class, 'Command is running now!');
 
         $this->artisan('icm:generic');
     }
