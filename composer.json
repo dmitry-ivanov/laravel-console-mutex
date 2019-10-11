@@ -1,5 +1,5 @@
 {
-    "name": "illuminated/console-mutex",
+    "name": "vafir/console-mutex",
     "description": "Mutex for Laravel console commands.",
     "keywords": ["laravel", "console", "command", "mutex", "overlapping", "locker"],
     "license": "MIT",
