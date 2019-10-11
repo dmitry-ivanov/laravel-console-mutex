@@ -19,7 +19,7 @@ trait WithoutOverlapping
     {
         $mutex = new Mutex($this);
         if (!$mutex->acquireLock($this->getMutexTimeout())) {
-            throw new RuntimeException('Command is running now!' . __CLASS__ );
+            throw new RuntimeException('Command is running now!' . __CLASS__);
         }
 
         register_shutdown_function([$this, 'releaseMutexLock'], $mutex);
