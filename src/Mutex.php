@@ -2,39 +2,70 @@
 
 namespace Illuminated\Console;
 
-use NinjaMutex\Lock\FlockLock;
-use NinjaMutex\Lock\MySqlLock;
-use NinjaMutex\Mutex as Ninja;
 use Illuminate\Console\Command;
-use NinjaMutex\Lock\PhpRedisLock;
-use NinjaMutex\Lock\MemcachedLock;
-use NinjaMutex\Lock\PredisRedisLock;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis as RedisFacade;
+use NinjaMutex\Lock\FlockLock;
+use NinjaMutex\Lock\MemcachedLock;
+use NinjaMutex\Lock\MySqlLock;
+use NinjaMutex\Lock\PhpRedisLock;
+use NinjaMutex\Lock\PredisRedisLock;
+use NinjaMutex\Mutex as NinjaMutex;
 
 /**
- * @mixin Ninja
+ * @mixin \NinjaMutex\Mutex
  */
 class Mutex
 {
+    /**
+     * The console command.
+     *
+     * @var \Illuminate\Console\Command
+     */
     private $command;
-    private $strategy;
-    private $ninja;
 
+    /**
+     * The ninja mutex.
+     *
+     * @var \NinjaMutex\Mutex
+     */
+    private $ninjaMutex;
+
+    /**
+     * The ninja mutex lock.
+     *
+     * @var \NinjaMutex\Lock\LockAbstract
+     */
+    private $ninjaMutexLock;
+
+    /**
+     * Create a new instance of the mutex.
+     *
+     * @param \Illuminate\Console\Command|\Illuminated\Console\WithoutOverlapping $command
+     * @return void
+     */
     public function __construct(Command $command)
     {
         $this->command = $command;
-        $this->strategy = $this->getStrategy();
-        $this->ninja = new Ninja($command->getMutexName(), $this->strategy);
+
+        $mutexName = $command->getMutexName();
+        $this->ninjaMutexLock = $this->getNinjaMutexLock();
+        $this->ninjaMutex = new NinjaMutex($mutexName, $this->ninjaMutexLock);
     }
 
-    public function getStrategy()
+    /**
+     * Get the ninja mutex lock.
+     *
+     * @return \NinjaMutex\Lock\LockAbstract
+     */
+    public function getNinjaMutexLock()
     {
-        if (!empty($this->strategy)) {
-            return $this->strategy;
+        if (!empty($this->ninjaMutexLock)) {
+            return $this->ninjaMutexLock;
         }
 
-        switch ($this->command->getMutexStrategy()) {
+        $strategy = $this->command->getMutexStrategy();
+        switch ($strategy) {
             case 'mysql':
                 return new MySqlLock(
                     config('database.connections.mysql.username'),
@@ -55,27 +86,30 @@ class Mutex
         }
     }
 
+    /**
+     * Get the redis lock.
+     *
+     * @param string $client
+     * @return \NinjaMutex\Lock\LockAbstract
+     */
     private function getRedisLock($client)
     {
-        if ($client === 'phpredis') {
-            return new PhpRedisLock($this->getPhpRedisClient());
-        }
+        $redis = RedisFacade::connection()->client();
 
-        return new PredisRedisLock($this->getPredisClient());
+        return $client === 'phpredis'
+            ? new PhpRedisLock($redis)
+            : new PredisRedisLock($redis);
     }
 
-    public function getPhpRedisClient()
-    {
-        return RedisFacade::connection()->client();
-    }
-
-    public function getPredisClient()
-    {
-        return RedisFacade::connection()->client();
-    }
-
+    /**
+     * Forward method calls to ninja mutex.
+     *
+     * @param string $method
+     * @param mixed $parameters
+     * @return mixed
+     */
     public function __call($method, $parameters)
     {
-        return call_user_func_array([$this->ninja, $method], $parameters);
+        return call_user_func_array([$this->ninjaMutex, $method], $parameters);
     }
 }

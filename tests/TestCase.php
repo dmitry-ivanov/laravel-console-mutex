@@ -2,10 +2,10 @@
 
 namespace Illuminated\Console\Tests;
 
-use Mockery;
-use Illuminated\Testing\TestingTools;
-use Illuminated\Console\Tests\App\Console\Kernel;
 use Illuminate\Contracts\Console\Kernel as KernelContract;
+use Illuminated\Console\Tests\App\Console\Kernel;
+use Illuminated\Testing\TestingTools;
+use Mockery;
 
 Mockery::globalHelpers();
 
@@ -13,8 +13,19 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
     use TestingTools;
 
+    /**
+     * Indicates if the console output should be mocked.
+     *
+     * @var bool
+     */
     public $mockConsoleOutput = false;
 
+    /**
+     * Resolve application Console Kernel implementation.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     * @return void
+     */
     protected function resolveApplicationConsoleKernel($app)
     {
         $app->singleton(KernelContract::class, Kernel::class);

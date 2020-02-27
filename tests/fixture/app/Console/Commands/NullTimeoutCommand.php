@@ -9,9 +9,25 @@ class NullTimeoutCommand extends Command
 {
     use WithoutOverlapping;
 
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
     protected $signature = 'icm:null-timeout-command';
-    protected $mutexTimeout = null;
 
+    /**
+     * The mutex timeout.
+     *
+     * @var int|null
+     */
+    protected $mutexTimeout;
+
+    /**
+     * Handle the command.
+     *
+     * @return void
+     */
     public function handle()
     {
         $this->info('Done!');
