@@ -4,9 +4,9 @@ namespace Illuminated\Console\Tests;
 
 use Illuminated\Console\MutexRuntimeException;
 use Illuminated\Console\Tests\App\Console\Commands\GenericCommand;
-use Illuminated\Console\Tests\App\Console\Commands\TimeoutCommand;
-use Illuminated\Console\Tests\App\Console\Commands\NullTimeoutCommand;
 use Illuminated\Console\Tests\App\Console\Commands\MysqlStrategyCommand;
+use Illuminated\Console\Tests\App\Console\Commands\NullTimeoutCommand;
+use Illuminated\Console\Tests\App\Console\Commands\TimeoutCommand;
 
 class WithoutOverlappingTraitTest extends TestCase
 {
@@ -70,12 +70,13 @@ class WithoutOverlappingTraitTest extends TestCase
     /** @test */
     public function it_generates_mutex_name_based_on_the_command_name_and_arguments()
     {
+        /** @var \Mockery\Mock|\Illuminated\Console\WithoutOverlapping $command */
         $command = mock(GenericCommand::class)->makePartial();
-        $command->expects()->getName()->andReturn('icm:generic');
-        $command->expects()->argument()->andReturn(['foo' => 'bar', 'baz' => 'faz']);
+        $command->expects('getName')->andReturn('icm:generic');
+        $command->expects('argument')->andReturn(['foo' => 'bar', 'baz' => 'faz']);
 
-        $md5 = md5(json_encode(['foo' => 'bar', 'baz' => 'faz']));
-        $this->assertEquals("icmutex-icm:generic-{$md5}", $command->getMutexName());
+        $hash = md5(json_encode(['foo' => 'bar', 'baz' => 'faz']));
+        $this->assertEquals("icmutex-icm:generic-{$hash}", $command->getMutexName());
     }
 
     /**
@@ -86,8 +87,8 @@ class WithoutOverlappingTraitTest extends TestCase
     public function it_allows_to_run_command_if_there_is_no_other_running_instances()
     {
         $mutex = mock('overload:Illuminated\Console\Mutex');
-        $mutex->expects()->acquireLock(0)->andReturn(true);
-        $mutex->allows()->releaseLock();
+        $mutex->expects('acquireLock')->with(0)->andReturn(true);
+        $mutex->allows('releaseLock');
 
         $this->artisan('icm:generic');
     }
@@ -99,10 +100,10 @@ class WithoutOverlappingTraitTest extends TestCase
      */
     public function it_blocks_if_trying_to_run_another_instance_of_the_command()
     {
-        $mutex = mock('overload:Illuminated\Console\Mutex');
-        $mutex->expects()->acquireLock(0)->andReturn(false);
-
         $this->willSeeException(MutexRuntimeException::class, 'Command is running now!');
+
+        $mutex = mock('overload:Illuminated\Console\Mutex');
+        $mutex->expects('acquireLock')->with(0)->andReturn(false);
 
         $this->artisan('icm:generic');
     }
@@ -114,8 +115,9 @@ class WithoutOverlappingTraitTest extends TestCase
      */
     public function it_is_releasing_the_lock_after_command_execution()
     {
+        /** @var \Mockery\Mock|\Illuminated\Console\Mutex $mutex */
         $mutex = mock('overload:Illuminated\Console\Mutex');
-        $mutex->expects()->releaseLock();
+        $mutex->expects('releaseLock');
 
         $command = new GenericCommand;
         $command->releaseMutexLock($mutex);
