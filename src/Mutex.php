@@ -25,14 +25,14 @@ class Mutex
     private $command;
 
     /**
-     * The ninja mutex.
+     * The NinjaMutex.
      *
      * @var \NinjaMutex\Mutex
      */
     private $ninjaMutex;
 
     /**
-     * The ninja mutex lock.
+     * The NinjaMutex lock.
      *
      * @var \NinjaMutex\Lock\LockAbstract
      */
@@ -54,7 +54,7 @@ class Mutex
     }
 
     /**
-     * Get the ninja mutex lock.
+     * Get the NinjaMutex lock.
      *
      * @return \NinjaMutex\Lock\LockAbstract
      */
@@ -102,7 +102,7 @@ class Mutex
     }
 
     /**
-     * Forward method calls to ninja mutex.
+     * Forward method calls to NinjaMutex.
      *
      * @param string $method
      * @param mixed $parameters
