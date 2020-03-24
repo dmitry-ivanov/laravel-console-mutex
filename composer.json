@@ -12,17 +12,17 @@
         "email": "dmitry.g.ivanov@gmail.com"
     }],
     "require": {
-        "php": "^7.2",
+        "php": "^7.2.5",
         "ext-json": "*",
-        "illuminate/support": "^6.0",
-        "illuminate/console": "^6.0",
+        "illuminate/support": "^7.0",
+        "illuminate/console": "^7.0",
         "arvenil/ninja-mutex": "^0.6"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.3",
-        "mockery/mockery": "^1.2",
-        "orchestra/testbench": "^4.0",
-        "illuminated/testing-tools": "^6.0",
+        "phpunit/phpunit": "^8.4|^9.0",
+        "mockery/mockery": "^1.3.1",
+        "orchestra/testbench": "^5.0",
+        "illuminated/testing-tools": "^7.0",
         "predis/predis": "^1.1.1",
         "ext-pdo_mysql": "*",
         "ext-redis": "*"
