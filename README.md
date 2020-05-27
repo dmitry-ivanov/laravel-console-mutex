@@ -1,3 +1,5 @@
+![Laravel Console Mutex](doc/img/example-new.gif)
+
 # Laravel Console Mutex
 
 [<img src="https://user-images.githubusercontent.com/1286821/43083932-4915853a-8ea0-11e8-8983-db9e0f04e772.png" alt="Become a Patron" width="160" />](https://patreon.com/dmitryivanov)
@@ -25,8 +27,6 @@ Mutex for Laravel console commands.
 | 5.3.*   | [5.3.*](https://github.com/dmitry-ivanov/laravel-console-mutex/tree/5.3) |
 | 5.2.*   | [5.2.*](https://github.com/dmitry-ivanov/laravel-console-mutex/tree/5.2) |
 | 5.1.*   | [5.1.*](https://github.com/dmitry-ivanov/laravel-console-mutex/tree/5.1) |
-
-![Example](doc/img/example-new.gif)
 
 ## Table of contents
 
