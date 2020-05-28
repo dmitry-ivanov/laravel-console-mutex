@@ -64,7 +64,7 @@ Mutex for Laravel Console Commands.
 
 ## Strategies
 
-The mutex can prevent overlapping by using various strategies:
+Mutex can prevent overlapping by using various strategies:
 
 - `file` (default)
 - `mysql`
