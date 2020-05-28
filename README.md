@@ -119,7 +119,7 @@ class ExampleCommand extends Command
 {
     use WithoutOverlapping;
 
-    // Timeout in milliseconds
+    // In milliseconds
     protected $mutexTimeout = 3000;
 
     // ...
@@ -137,7 +137,7 @@ class ExampleCommand extends Command
     {
         parent::__construct();
 
-        // Timeout in milliseconds
+        // In milliseconds
         $this->setMutexTimeout(3000);
     }
 
