@@ -11,7 +11,7 @@
 [![Total Downloads](https://poser.pugx.org/illuminated/console-mutex/downloads)](https://packagist.org/packages/illuminated/console-mutex)
 [![License](https://poser.pugx.org/illuminated/console-mutex/license)](https://packagist.org/packages/illuminated/console-mutex)
 
-Mutex for Laravel console commands.
+Mutex for Laravel Console Commands.
 
 | Laravel | Console Mutex                                                            |
 | ------- | :----------------------------------------------------------------------: |
@@ -26,7 +26,7 @@ Mutex for Laravel console commands.
 | 5.2.*   | [5.2.*](https://github.com/dmitry-ivanov/laravel-console-mutex/tree/5.2) |
 | 5.1.*   | [5.1.*](https://github.com/dmitry-ivanov/laravel-console-mutex/tree/5.1) |
 
-![Example](doc/img/example-new.gif)
+![Laravel Console Mutex](doc/img/example-new.gif)
 
 ## Table of contents
 
@@ -34,8 +34,8 @@ Mutex for Laravel console commands.
 - [Strategies](#strategies)
 - [Advanced](#advanced)
   - [Set custom timeout](#set-custom-timeout)
-  - [Handle several commands](#handle-several-commands)
-  - [Custom mutex file storage](#custom-mutex-file-storage)
+  - [Handle multiple commands](#handle-multiple-commands)
+  - [Set custom storage folder](#set-custom-storage-folder)
 - [Troubleshooting](#troubleshooting)
   - [Trait included, but nothing happens?](#trait-included-but-nothing-happens)
   - [Several traits conflict?](#several-traits-conflict)
@@ -45,7 +45,7 @@ Mutex for Laravel console commands.
 
 1. Install the package via Composer:
 
-    ```shell
+    ```shell script
     composer require "illuminated/console-mutex:^7.0"
     ```
 
@@ -64,17 +64,17 @@ Mutex for Laravel console commands.
 
 ## Strategies
 
-Overlapping can be prevented by various strategies:
+Mutex can prevent overlapping by using various strategies:
 
 - `file` (default)
 - `mysql`
 - `redis`
 - `memcached`
 
-Default `file` strategy is fine for small applications, which are deployed on a single server.
-If your application is more complex and deployed on several nodes, then you probably would like to use another mutex strategy.
+The default `file` strategy is acceptable for small applications, which are deployed on a single server.
+If your application is more complex and deployed on several nodes, you should consider using another mutex strategy.
 
-You can change the mutex strategy by specifying `$mutexStrategy` field:
+You can change strategy by using the `$mutexStrategy` field:
 
 ```php
 class ExampleCommand extends Command
@@ -87,7 +87,7 @@ class ExampleCommand extends Command
 }
 ```
 
-Or by using `setMutexStrategy` method:
+Or by using the `setMutexStrategy()` method:
 
 ```php
 class ExampleCommand extends Command
@@ -109,23 +109,24 @@ class ExampleCommand extends Command
 
 ### Set custom timeout
 
-By default, the mutex is checking for a running command, and if it finds such, it just exits. However, you can manually
-set the timeout for a mutex, so it can wait for another command to finish its execution, instead of just quitting immediately.
+By default, if mutex sees that the command is already running, it will immediately quit.
+You can change that behavior by setting a timeout in which mutex can wait for another running command to finish its execution.
 
-You can change the mutex timeout by specifying `$mutexTimeout` field:
+You can set the timeout by specifying the `$mutexTimeout` field:
 
 ```php
 class ExampleCommand extends Command
 {
     use WithoutOverlapping;
 
-    protected $mutexTimeout = 3000; // milliseconds
+    // In milliseconds
+    protected $mutexTimeout = 3000;
 
     // ...
 }
 ```
 
-Or by using `setMutexTimeout` method:
+Or by using the `setMutexTimeout()` method:
 
 ```php
 class ExampleCommand extends Command
@@ -136,25 +137,26 @@ class ExampleCommand extends Command
     {
         parent::__construct();
 
-        $this->setMutexTimeout(3000); // milliseconds
+        // In milliseconds
+        $this->setMutexTimeout(3000);
     }
 
     // ...
 }
 ```
 
-There are three possible options for `$mutexTimeout` field:
+Here's how the `$mutexTimeout` field is treated:
 
-- `0` - check without waiting (default);
-- `{milliseconds}` - check, and wait for a maximum of milliseconds specified;
-- `null` - wait, till running command finish its execution;
+- `0` - no waiting (default);
+- `{int}` - wait for the given number of milliseconds;
+- `null` - wait for the running command to finish its execution;
 
-### Handle several commands
+### Handle multiple commands
 
-Sometimes it is useful to set common mutex for several commands. You can easily achieve this by setting them the same mutex name.
-By default, mutex name is generated based on a command's name and arguments.
+Sometimes it might be useful to have a shared mutex for multiple commands.
+You can easily achieve that by setting the same mutex name for all of those commands.
 
-To change this, override `getMutexName` method in your command:
+You should use the `getMutexName()` method for that:
 
 ```php
 class ExampleCommand extends Command
@@ -163,18 +165,18 @@ class ExampleCommand extends Command
 
     public function getMutexName()
     {
-        return "icmutex-for-command1-and-command2";
+        return 'shared-for-command1-and-command2';
     }
 
     // ...
 }
 ```
 
-### Custom mutex file storage
+### Set custom storage folder
 
-If you're using `file` strategy, mutex files will be stored in the `storage/app` folder, by default.
+If you're using the `file` strategy, mutex files would be stored in the `storage/app` folder.
 
-You can change the storage folder by overriding `getMutexFileStorage` method in your command:
+You can change that by overriding the `getMutexFileStorage()` method:
 
 ```php
 class ExampleCommand extends Command
@@ -194,7 +196,7 @@ class ExampleCommand extends Command
 
 ### Trait included, but nothing happens?
 
-Note, that `WithoutOverlapping` trait is overriding `initialize` method:
+`WithoutOverlapping` trait overrides the `initialize()` method:
 
 ```php
 trait WithoutOverlapping
@@ -202,13 +204,15 @@ trait WithoutOverlapping
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
         $this->initializeMutex();
+
+        parent::initialize($input, $output);
     }
 
     // ...
 }
 ```
 
-If your command is overriding `initialize` method too, then you should call `initializeMutex` method by yourself:
+If your command overrides the `initialize()` method too, you have to call the `initializeMutex()` method by yourself:
 
 ```php
 class ExampleCommand extends Command
@@ -217,8 +221,10 @@ class ExampleCommand extends Command
 
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
+        // You have to call it first
         $this->initializeMutex();
 
+        // Then goes your custom code
         $this->foo = $this->argument('foo');
         $this->bar = $this->argument('bar');
         $this->baz = $this->argument('baz');
@@ -230,9 +236,9 @@ class ExampleCommand extends Command
 
 ### Several traits conflict?
 
-If you're using another `illuminated/console-%` package, then you can find yourself getting into the "traits conflict".
+If you're using another `illuminated/console-%` package, you'll get the "traits conflict" error.
 
-For example, if you're trying to build [loggable command](https://github.com/dmitry-ivanov/laravel-console-logger), which is protected against overlapping:
+For example, if you're building a [loggable command](https://github.com/dmitry-ivanov/laravel-console-logger), which doesn't allow overlapping:
 
 ```php
 class ExampleCommand extends Command
@@ -244,10 +250,10 @@ class ExampleCommand extends Command
 }
 ```
 
-You'll get the fatal error - the traits conflict, because of both of these traits are overriding `initialize` method:
+You'll get the traits conflict, because both of those traits are overriding the `initialize()` method:
 > If two traits insert a method with the same name, a fatal error is produced, if the conflict is not explicitly resolved.
 
-Override `initialize` method by yourself, and initialize traits in required order:
+To fix that - override the `initialize()` method and resolve the conflict:
 
 ```php
 class ExampleCommand extends Command
@@ -257,6 +263,7 @@ class ExampleCommand extends Command
 
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
+        // Initialize conflicting traits
         $this->initializeMutex();
         $this->initializeLogging();
     }
@@ -267,6 +274,6 @@ class ExampleCommand extends Command
 
 ## License
 
-The MIT License. Please see [License File](LICENSE.md) for more information.
+Laravel Console Mutex is open-sourced software licensed under the [MIT license](LICENSE.md).
 
 [<img src="https://user-images.githubusercontent.com/1286821/43086829-ff7c006e-8ea6-11e8-8b03-ecf97ca95b2e.png" alt="Support on Patreon" width="125" />](https://patreon.com/dmitryivanov)
