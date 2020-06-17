@@ -3,7 +3,7 @@
 [<img src="https://user-images.githubusercontent.com/1286821/43083932-4915853a-8ea0-11e8-8983-db9e0f04e772.png" alt="Become a Patron" width="160" />](https://patreon.com/dmitryivanov)
 
 [![StyleCI](https://styleci.io/repos/59570052/shield?branch=7.x&style=flat)](https://styleci.io/repos/59570052)
-[![Build Status](https://travis-ci.org/dmitry-ivanov/laravel-console-mutex.svg?branch=7.x)](https://travis-ci.org/dmitry-ivanov/laravel-console-mutex)
+[![Build Status](https://travis-ci.com/dmitry-ivanov/laravel-console-mutex.svg?branch=7.x)](https://travis-ci.com/dmitry-ivanov/laravel-console-mutex)
 [![Coverage Status](https://coveralls.io/repos/github/dmitry-ivanov/laravel-console-mutex/badge.svg?branch=7.x)](https://coveralls.io/github/dmitry-ivanov/laravel-console-mutex?branch=7.x)
 
 [![Latest Stable Version](https://poser.pugx.org/illuminated/console-mutex/v/stable)](https://packagist.org/packages/illuminated/console-mutex)
