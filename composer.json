@@ -14,25 +14,19 @@
     "require": {
         "php": "^7.3",
         "ext-json": "*",
+        "arvenil/ninja-mutex": "^0.6",
         "illuminate/support": "^8.0",
-        "illuminate/console": "^8.0",
-        "arvenil/ninja-mutex": "^0.6"
+        "illuminate/console": "^8.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.4|^9.0",
         "mockery/mockery": "^1.3.1",
         "orchestra/testbench": "^6.0",
-        "illuminated/testing-tools": "8.x-dev",
+        "illuminated/testing-tools": "dev-master",
         "predis/predis": "^1.1.1",
         "ext-pdo_mysql": "*",
         "ext-redis": "*"
     },
-    "repositories": [
-        {
-            "type": "github",
-            "url": "https://github.com/mihan007/laravel-testing-tools"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "Illuminated\\Console\\": "src/"
