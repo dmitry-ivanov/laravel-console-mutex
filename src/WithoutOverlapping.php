@@ -2,7 +2,6 @@
 
 namespace Illuminated\Console;
 
-use RuntimeException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -19,7 +18,7 @@ trait WithoutOverlapping
     {
         $mutex = new Mutex($this);
         if (!$mutex->acquireLock($this->getMutexTimeout())) {
-            throw new RuntimeException('Command is running now!');
+            throw new MutexRuntimeException('Command is running now!');
         }
 
         register_shutdown_function([$this, 'releaseMutexLock'], $mutex);
@@ -27,7 +26,7 @@ trait WithoutOverlapping
 
     public function getMutexStrategy()
     {
-        return (property_exists($this, 'mutexStrategy') ? $this->mutexStrategy : 'file');
+        return property_exists($this, 'mutexStrategy') ? $this->mutexStrategy : 'file';
     }
 
     public function setMutexStrategy($strategy)
@@ -37,7 +36,7 @@ trait WithoutOverlapping
 
     public function getMutexTimeout()
     {
-        return (property_exists($this, 'mutexTimeout') ? $this->mutexTimeout : 0);
+        return property_exists($this, 'mutexTimeout') ? $this->mutexTimeout : 0;
     }
 
     public function setMutexTimeout($timeout)
