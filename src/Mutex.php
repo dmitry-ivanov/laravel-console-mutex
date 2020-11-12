@@ -2,15 +2,15 @@
 
 namespace Illuminated\Console;
 
-use NinjaMutex\Lock\FlockLock;
-use NinjaMutex\Lock\MySqlLock;
-use NinjaMutex\Mutex as Ninja;
 use Illuminate\Console\Command;
-use NinjaMutex\Lock\PhpRedisLock;
-use NinjaMutex\Lock\MemcachedLock;
-use NinjaMutex\Lock\PredisRedisLock;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis as RedisFacade;
+use NinjaMutex\Lock\FlockLock;
+use NinjaMutex\Lock\MemcachedLock;
+use NinjaMutex\Lock\MySqlLock;
+use NinjaMutex\Lock\PhpRedisLock;
+use NinjaMutex\Lock\PredisRedisLock;
+use NinjaMutex\Mutex as Ninja;
 
 /**
  * @mixin Ninja

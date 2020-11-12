@@ -2,10 +2,10 @@
 
 namespace Illuminated\Console\ConsoleMutex\Tests;
 
+use Illuminate\Contracts\Console\Kernel as KernelContract;
+use Illuminated\Testing\TestingTools;
 use Kernel;
 use Mockery;
-use Illuminated\Testing\TestingTools;
-use Illuminate\Contracts\Console\Kernel as KernelContract;
 
 Mockery::globalHelpers();
 
