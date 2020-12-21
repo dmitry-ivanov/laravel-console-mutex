@@ -4,6 +4,12 @@ php:
   - 7.2
   - 7.3
   - 7.4
+  - 8.0
+
+env:
+  global:
+    - COMPOSER_MEMORY_LIMIT=-1
+    - XDEBUG_MODE=coverage
 
 cache:
   directories:
@@ -16,8 +22,8 @@ before_install:
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 install:
-  - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer install --no-interaction --prefer-dist
-  - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer require --no-interaction --prefer-dist --dev php-coveralls/php-coveralls
+  - travis_retry composer install --no-interaction --prefer-dist
+  - travis_retry composer require --no-interaction --prefer-dist --dev php-coveralls/php-coveralls
 
 script: vendor/bin/phpunit --verbose --coverage-clover build/logs/clover.xml
 
