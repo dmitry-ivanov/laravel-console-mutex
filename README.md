@@ -8,10 +8,10 @@
 [![Build Status](https://img.shields.io/github/workflow/status/dmitry-ivanov/laravel-console-mutex/tests/master)](https://github.com/dmitry-ivanov/laravel-console-mutex/actions?query=workflow%3Atests+branch%3Amaster)
 [![Coverage Status](https://img.shields.io/codecov/c/github/dmitry-ivanov/laravel-console-mutex/master)](https://app.codecov.io/gh/dmitry-ivanov/laravel-console-mutex/branch/master)
 
-[![Latest Stable Version](https://poser.pugx.org/illuminated/console-mutex/v/stable)](https://packagist.org/packages/illuminated/console-mutex)
-[![Latest Unstable Version](https://poser.pugx.org/illuminated/console-mutex/v/unstable)](https://packagist.org/packages/illuminated/console-mutex)
-[![Total Downloads](https://poser.pugx.org/illuminated/console-mutex/downloads)](https://packagist.org/packages/illuminated/console-mutex)
-[![License](https://poser.pugx.org/illuminated/console-mutex/license)](https://packagist.org/packages/illuminated/console-mutex)
+![Packagist Version](https://img.shields.io/packagist/v/illuminated/console-mutex)
+![Packagist Stars](https://img.shields.io/packagist/stars/illuminated/console-mutex)
+![Packagist Downloads](https://img.shields.io/packagist/dt/illuminated/console-mutex)
+![Packagist License](https://img.shields.io/packagist/l/illuminated/console-mutex)
 
 Mutex for Laravel Console Commands.
 
