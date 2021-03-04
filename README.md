@@ -8,10 +8,10 @@
 [![Build Status](https://img.shields.io/github/workflow/status/dmitry-ivanov/laravel-console-mutex/tests/8.x)](https://github.com/dmitry-ivanov/laravel-console-mutex/actions?query=workflow%3Atests+branch%3A8.x)
 [![Coverage Status](https://img.shields.io/codecov/c/github/dmitry-ivanov/laravel-console-mutex/8.x)](https://app.codecov.io/gh/dmitry-ivanov/laravel-console-mutex/branch/8.x)
 
-[![Latest Stable Version](https://poser.pugx.org/illuminated/console-mutex/v/stable)](https://packagist.org/packages/illuminated/console-mutex)
-[![Latest Unstable Version](https://poser.pugx.org/illuminated/console-mutex/v/unstable)](https://packagist.org/packages/illuminated/console-mutex)
-[![Total Downloads](https://poser.pugx.org/illuminated/console-mutex/downloads)](https://packagist.org/packages/illuminated/console-mutex)
-[![License](https://poser.pugx.org/illuminated/console-mutex/license)](https://packagist.org/packages/illuminated/console-mutex)
+![Packagist Version](https://img.shields.io/packagist/v/illuminated/console-mutex)
+![Packagist Stars](https://img.shields.io/packagist/stars/illuminated/console-mutex)
+![Packagist Downloads](https://img.shields.io/packagist/dt/illuminated/console-mutex)
+![Packagist License](https://img.shields.io/packagist/l/illuminated/console-mutex)
 
 Mutex for Laravel Console Commands.
 
@@ -42,6 +42,7 @@ Mutex for Laravel Console Commands.
 - [Troubleshooting](#troubleshooting)
   - [Trait included, but nothing happens?](#trait-included-but-nothing-happens)
   - [Several traits conflict?](#several-traits-conflict)
+- [Sponsors](#sponsors)
 - [License](#license)
 
 ## Usage
@@ -274,6 +275,10 @@ class ExampleCommand extends Command
     // ...
 }
 ```
+
+## Sponsors
+
+[![Laravel Idea](art/sponsor-laravel-idea.png)](https://laravel-idea.com)
 
 ## License
 
