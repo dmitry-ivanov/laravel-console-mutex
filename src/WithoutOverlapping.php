@@ -8,6 +8,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 trait WithoutOverlapping
 {
     /**
+     * Link to current mutex.
+     *
+     * @var Mutex
+     */
+    private Mutex $mutex;
+
+    /**
      * Overwrite the console command initialization.
      *
      * @param \Symfony\Component\Console\Input\InputInterface $input
@@ -28,14 +35,14 @@ trait WithoutOverlapping
      */
     protected function initializeMutex()
     {
-        $mutex = new Mutex($this);
+        $this->mutex = new Mutex($this);
 
         $timeout = $this->getMutexTimeout();
-        if (!$mutex->acquireLock($timeout)) {
+        if (!$this->mutex->acquireLock($timeout)) {
             throw new MutexRuntimeException('Command is running now!');
         }
 
-        register_shutdown_function([$this, 'releaseMutexLock'], $mutex);
+        register_shutdown_function([$this, 'releaseMutexLock'], $this->mutex);
     }
 
     /**
@@ -132,5 +139,17 @@ trait WithoutOverlapping
     public function releaseMutexLock(Mutex $mutex)
     {
         $mutex->releaseLock();
+    }
+
+    /**
+     * Release the current mutex lock.
+     *
+     * For custom call
+     *
+     * @return void
+     */
+    public function releaseCurrentMutexLock()
+    {
+        $this->mutex->releaseLock();
     }
 }
