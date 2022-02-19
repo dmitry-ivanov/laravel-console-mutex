@@ -16,7 +16,8 @@
 Mutex for Laravel Console Commands.
 
 | Laravel | Console Mutex                                                            |
-| ------- | :----------------------------------------------------------------------: |
+|---------|--------------------------------------------------------------------------|
+| 9.x     | [9.x](https://github.com/dmitry-ivanov/laravel-console-mutex/tree/9.x)   |
 | 8.x     | [8.x](https://github.com/dmitry-ivanov/laravel-console-mutex/tree/8.x)   |
 | 7.x     | [7.x](https://github.com/dmitry-ivanov/laravel-console-mutex/tree/7.x)   |
 | 6.x     | [6.x](https://github.com/dmitry-ivanov/laravel-console-mutex/tree/6.x)   |
