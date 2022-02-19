@@ -15,7 +15,8 @@
         "php": "^8.0.2",
         "arvenil/ninja-mutex": "^0.6",
         "illuminate/console": "^9.0",
-        "illuminate/support": "^9.0"
+        "illuminate/support": "^9.0",
+        "ramsey/uuid": "^4.2.3"
     },
     "require-dev": {
         "ext-redis": "*",
