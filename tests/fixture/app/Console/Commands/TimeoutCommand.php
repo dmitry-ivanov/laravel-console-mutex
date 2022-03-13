@@ -18,17 +18,13 @@ class TimeoutCommand extends Command
 
     /**
      * The mutex timeout.
-     *
-     * @var int|null
      */
-    protected $mutexTimeout = 3000;
+    protected ?int $mutexTimeout = 3000;
 
     /**
      * Handle the command.
-     *
-     * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $this->info('Done!');
     }

@@ -18,17 +18,13 @@ class MysqlStrategyCommand extends Command
 
     /**
      * The mutex strategy.
-     *
-     * @var string
      */
-    protected $mutexStrategy = 'mysql';
+    protected string $mutexStrategy = 'mysql';
 
     /**
      * Handle the command.
-     *
-     * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $this->info('Done!');
     }

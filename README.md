@@ -86,7 +86,7 @@ class ExampleCommand extends Command
 {
     use WithoutOverlapping;
 
-    protected $mutexStrategy = 'mysql';
+    protected string $mutexStrategy = 'mysql';
 
     // ...
 }
@@ -125,7 +125,7 @@ class ExampleCommand extends Command
     use WithoutOverlapping;
 
     // In milliseconds
-    protected $mutexTimeout = 3000;
+    protected ?int $mutexTimeout = 3000;
 
     // ...
 }

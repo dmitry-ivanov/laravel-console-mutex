@@ -2,10 +2,12 @@
 
 namespace Illuminated\Console\Tests;
 
+use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis as RedisFacade;
 use Illuminated\Console\Mutex;
 use Illuminated\Console\Tests\App\Console\Commands\GenericCommand;
+use Mockery\Mock;
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\MemcachedLock;
 use NinjaMutex\Lock\MySqlLock;
@@ -18,15 +20,11 @@ class MutexTest extends TestCase
 {
     /**
      * The console command mock.
-     *
-     * @var \Mockery\Mock|\Illuminate\Console\Command
      */
-    private $command;
+    private Mock|Command $command;
 
     /**
      * Setup the test environment.
-     *
-     * @return void
      */
     protected function setUp(): void
     {

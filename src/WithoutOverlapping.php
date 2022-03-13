@@ -9,12 +9,8 @@ trait WithoutOverlapping
 {
     /**
      * Overwrite the console command initialization.
-     *
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     * @return void
      */
-    protected function initialize(InputInterface $input, OutputInterface $output)
+    protected function initialize(InputInterface $input, OutputInterface $output): void
     {
         $this->initializeMutex();
 
@@ -23,10 +19,8 @@ trait WithoutOverlapping
 
     /**
      * Initialize the mutex.
-     *
-     * @return void
      */
-    protected function initializeMutex()
+    protected function initializeMutex(): void
     {
         $mutex = new Mutex($this);
 
@@ -42,10 +36,8 @@ trait WithoutOverlapping
      * Get the mutex strategy.
      *
      * Currently supported: "file", "mysql", "redis" and "memcached".
-     *
-     * @return string
      */
-    public function getMutexStrategy()
+    public function getMutexStrategy(): string
     {
         return property_exists($this, 'mutexStrategy')
             ? $this->mutexStrategy
@@ -56,11 +48,8 @@ trait WithoutOverlapping
      * Set the mutex strategy.
      *
      * Currently supported: "file", "mysql", "redis" and "memcached".
-     *
-     * @param string $strategy
-     * @return void
      */
-    public function setMutexStrategy($strategy)
+    public function setMutexStrategy(string $strategy): void
     {
         $this->mutexStrategy = $strategy;
     }
@@ -72,10 +61,8 @@ trait WithoutOverlapping
      * `0` - check without waiting;
      * `{milliseconds}` - check, and wait for a maximum of milliseconds specified;
      * `null` - wait, till running command finish its execution;
-     *
-     * @return int|null
      */
-    public function getMutexTimeout()
+    public function getMutexTimeout(): int|null
     {
         return property_exists($this, 'mutexTimeout')
             ? $this->mutexTimeout
@@ -89,21 +76,16 @@ trait WithoutOverlapping
      * `0` - check without waiting;
      * `{milliseconds}` - check, and wait for a maximum of milliseconds specified;
      * `null` - wait, till running command finish its execution;
-     *
-     * @param int|null $timeout
-     * @return void
      */
-    public function setMutexTimeout($timeout)
+    public function setMutexTimeout(int|null $timeout): void
     {
         $this->mutexTimeout = $timeout;
     }
 
     /**
      * Get the mutex name.
-     *
-     * @return string
      */
-    public function getMutexName()
+    public function getMutexName(): string
     {
         $name = $this->getName();
         $argumentsHash = md5(json_encode($this->argument()));
@@ -113,10 +95,8 @@ trait WithoutOverlapping
 
     /**
      * Get the mutex file storage path.
-     *
-     * @return string
      */
-    public function getMutexFileStorage()
+    public function getMutexFileStorage(): string
     {
         return storage_path('app');
     }
@@ -125,11 +105,8 @@ trait WithoutOverlapping
      * Release the mutex lock.
      *
      * Called automatically, because it's registered as a shutdown function.
-     *
-     * @param \Illuminated\Console\Mutex $mutex
-     * @return void
      */
-    public function releaseMutexLock(Mutex $mutex)
+    public function releaseMutexLock(Mutex $mutex): void
     {
         $mutex->releaseLock();
     }

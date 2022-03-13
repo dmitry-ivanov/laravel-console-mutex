@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis as RedisFacade;
 use NinjaMutex\Lock\FlockLock;
+use NinjaMutex\Lock\LockAbstract;
 use NinjaMutex\Lock\MemcachedLock;
 use NinjaMutex\Lock\MySqlLock;
 use NinjaMutex\Lock\PhpRedisLock;
@@ -19,33 +20,25 @@ class Mutex
 {
     /**
      * The console command.
-     *
-     * @var \Illuminate\Console\Command
      */
-    private $command;
+    private Command $command;
 
     /**
      * The NinjaMutex.
-     *
-     * @var \NinjaMutex\Mutex
      */
-    private $ninjaMutex;
+    private NinjaMutex $ninjaMutex;
 
     /**
      * The NinjaMutex lock.
-     *
-     * @var \NinjaMutex\Lock\LockAbstract
      */
-    private $ninjaMutexLock;
+    private LockAbstract $ninjaMutexLock;
 
     /**
      * Create a new instance of the mutex.
-     *
-     * @param \Illuminate\Console\Command|\Illuminated\Console\WithoutOverlapping $command
-     * @return void
      */
     public function __construct(Command $command)
     {
+        /** @var WithoutOverlapping $command */
         $this->command = $command;
 
         $mutexName = $command->getMutexName();
@@ -55,10 +48,8 @@ class Mutex
 
     /**
      * Get the NinjaMutex lock.
-     *
-     * @return \NinjaMutex\Lock\LockAbstract
      */
-    public function getNinjaMutexLock()
+    public function getNinjaMutexLock(): LockAbstract
     {
         if (!empty($this->ninjaMutexLock)) {
             return $this->ninjaMutexLock;
@@ -88,11 +79,8 @@ class Mutex
 
     /**
      * Get the redis lock.
-     *
-     * @param string $client
-     * @return \NinjaMutex\Lock\LockAbstract
      */
-    private function getRedisLock($client)
+    private function getRedisLock(string $client): LockAbstract
     {
         $redis = RedisFacade::connection()->client();
 
@@ -103,12 +91,8 @@ class Mutex
 
     /**
      * Forward method calls to NinjaMutex.
-     *
-     * @param string $method
-     * @param mixed $parameters
-     * @return mixed
      */
-    public function __call($method, $parameters)
+    public function __call(string $method, mixed $parameters): mixed
     {
         return call_user_func_array([$this->ninjaMutex, $method], $parameters);
     }
