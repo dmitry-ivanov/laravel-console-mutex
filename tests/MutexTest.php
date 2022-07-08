@@ -67,8 +67,8 @@ class MutexTest extends TestCase
         $mutex = new Mutex($this->command);
         $expectedLock = new MySqlPdoLock(
             'mysql:' . implode(';', [
-                "host=" . config('database.connections.mysql.host'),
-                "port=" . config('database.connections.mysql.port', 3306),
+                'host=' . config('database.connections.mysql.host'),
+                'port=' . config('database.connections.mysql.port', 3306),
             ]),
             config('database.connections.mysql.username'),
             config('database.connections.mysql.password'),
