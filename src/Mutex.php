@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Redis as RedisFacade;
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\LockAbstract;
 use NinjaMutex\Lock\MemcachedLock;
-use NinjaMutex\Lock\MySqlLock;
+use NinjaMutex\Lock\MySQLPDOLock;
 use NinjaMutex\Lock\PhpRedisLock;
 use NinjaMutex\Lock\PredisRedisLock;
 use NinjaMutex\Mutex as NinjaMutex;
@@ -58,11 +58,14 @@ class Mutex
         $strategy = $this->command->getMutexStrategy();
         switch ($strategy) {
             case 'mysql':
-                return new MySqlLock(
+                return new MySQLPDOLock(
+                    'mysql:' . implode(';', [
+                        "host=" . config('database.connections.mysql.host'),
+                        "port=" . config('database.connections.mysql.port', 3306),
+                    ]),
                     config('database.connections.mysql.username'),
                     config('database.connections.mysql.password'),
-                    config('database.connections.mysql.host'),
-                    config('database.connections.mysql.port', 3306)
+                    config('database.connections.mysql.options')
                 );
 
             case 'redis':
