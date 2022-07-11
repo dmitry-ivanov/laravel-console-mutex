@@ -10,7 +10,7 @@ use Illuminated\Console\Tests\App\Console\Commands\GenericCommand;
 use Mockery\Mock;
 use NinjaMutex\Lock\FlockLock;
 use NinjaMutex\Lock\MemcachedLock;
-use NinjaMutex\Lock\MySqlLock;
+use NinjaMutex\Lock\MySQLPDOLock;
 use NinjaMutex\Lock\PhpRedisLock;
 use NinjaMutex\Lock\PredisRedisLock;
 use Predis\Client as PredisClient;
@@ -65,11 +65,14 @@ class MutexTest extends TestCase
         $this->command->expects('getMutexStrategy')->andReturn('mysql');
 
         $mutex = new Mutex($this->command);
-        $expectedLock = new MySqlLock(
+        $expectedLock = new MySqlPdoLock(
+            'mysql:' . implode(';', [
+                'host=' . config('database.connections.mysql.host'),
+                'port=' . config('database.connections.mysql.port', 3306),
+            ]),
             config('database.connections.mysql.username'),
             config('database.connections.mysql.password'),
-            config('database.connections.mysql.host'),
-            config('database.connections.mysql.port', 3306)
+            config('database.connections.mysql.options')
         );
         $this->assertEquals($expectedLock, $mutex->getNinjaMutexLock());
     }
