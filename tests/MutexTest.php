@@ -72,7 +72,7 @@ class MutexTest extends TestCase
             ]),
             config('database.connections.mysql.username'),
             config('database.connections.mysql.password'),
-            config('database.connections.mysql.options')
+            config('database.connections.mysql.options'),
         );
         $this->assertEquals($expectedLock, $mutex->getNinjaMutexLock());
     }

@@ -38,7 +38,7 @@ class Mutex
      */
     public function __construct(Command $command)
     {
-        /** @var WithoutOverlapping $command */
+        /** @var Command|WithoutOverlapping $command */
         $this->command = $command;
 
         $mutexName = $command->getMutexName();
@@ -65,7 +65,7 @@ class Mutex
                     ]),
                     config('database.connections.mysql.username'),
                     config('database.connections.mysql.password'),
-                    config('database.connections.mysql.options')
+                    config('database.connections.mysql.options'),
                 );
 
             case 'redis':
