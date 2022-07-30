@@ -26,7 +26,9 @@ trait WithoutOverlapping
 
         $timeout = $this->getMutexTimeout();
         if (!$mutex->acquireLock($timeout)) {
-            throw new MutexRuntimeException('Command is running now!');
+            
+            echo "Command is running now!";
+            //throw new MutexRuntimeException('Command is running now!');
         }
 
         register_shutdown_function([$this, 'releaseMutexLock'], $mutex);
