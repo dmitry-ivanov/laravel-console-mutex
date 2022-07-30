@@ -1,5 +1,5 @@
 {
-    "name": "illuminated/console-mutex-divulgawhats",
+    "name": "jhowbhz/console-mutex-divulgawhats",
     "description": "Mutex for Laravel Console Commands. poweredby divulgawhats",
     "keywords": ["laravel", "console", "command", "mutex", "mutex-lock", "semaphore", "locker", "no-overlapping"],
     "license": "MIT",
