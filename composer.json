@@ -12,7 +12,7 @@
         "email": "jhowjhoe@gmail.com"
     }],
     "require": {
-        "php": "^8.0.2",
+        "php": "^7.2",
         "arvenil/ninja-mutex": "dev-master#82cbb2c",
         "illuminate/console": "^9.0",
         "illuminate/support": "^9.0",
