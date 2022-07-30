@@ -1,15 +1,15 @@
 {
-    "name": "illuminated/console-mutex",
-    "description": "Mutex for Laravel Console Commands.",
+    "name": "illuminated/console-mutex-divulgawhats",
+    "description": "Mutex for Laravel Console Commands. poweredby divulgawhats",
     "keywords": ["laravel", "console", "command", "mutex", "mutex-lock", "semaphore", "locker", "no-overlapping"],
     "license": "MIT",
     "support": {
-        "issues": "https://github.com/dmitry-ivanov/laravel-console-mutex/issues",
-        "source": "https://github.com/dmitry-ivanov/laravel-console-mutex"
+        "issues": "",
+        "source": ""
     },
     "authors": [{
-        "name": "Dmitry Ivanov",
-        "email": "dmitry.g.ivanov@gmail.com"
+        "name": "Jhon",
+        "email": "jhowjhoe@gmail.com"
     }],
     "require": {
         "php": "^8.0.2",
