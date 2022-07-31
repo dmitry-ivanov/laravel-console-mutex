@@ -28,6 +28,9 @@ class ExampleCommand extends Command
 }
 ```
 
+## Others packages
+https://packagist.org/packages/jhowbhz/
+
 
 Thanks for developer original
 https://github.com/dmitry-ivanov/laravel-console-mutex
