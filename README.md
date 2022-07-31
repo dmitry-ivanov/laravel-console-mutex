@@ -1,5 +1,4 @@
-# Console Mutex Divulgawhats 🚀
-
+# Console Mutex DivulgaWhats 🚀
 
 ![APIGratis Banner](https://i.imgur.com/uGwboXm.png)
 
@@ -12,7 +11,21 @@
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%208.0-8892BF.svg?style=flat-square)](https://php.net/)
 
 ## Description
-> Is a fork e change for my necessity.
+> Is a fork e change for me.
+
+## Usage
+
+```composer require jhowbhz/console-mutex-divulgawhats```
+
+```use Illuminated\Console\WithoutOverlapping;
+
+class ExampleCommand extends Command
+{
+    use WithoutOverlapping;
+
+    // ...
+}```
+
 
 Thanks for developer original
-https://github.com/dmitry-ivanov/laravWithoutOverlappingel-console-mutex
+https://github.com/dmitry-ivanov/laravel-console-mutex
