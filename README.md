@@ -17,14 +17,16 @@
 
 ```composer require jhowbhz/console-mutex-divulgawhats```
 
-```use Illuminated\Console\WithoutOverlapping;
+```php
+use Illuminated\Console\WithoutOverlapping;
 
 class ExampleCommand extends Command
 {
     use WithoutOverlapping;
 
     // ...
-}```
+}
+```
 
 
 Thanks for developer original
