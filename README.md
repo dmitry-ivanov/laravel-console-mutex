@@ -11,7 +11,7 @@
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%208.0-8892BF.svg?style=flat-square)](https://php.net/)
 
 ## Description
-> Is a fork e change for me.
+> Avoid Overlapping crons jobs in Laravel Framework, is a fork and change for me.
 
 ## Usage
 
