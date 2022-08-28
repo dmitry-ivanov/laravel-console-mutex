@@ -2,7 +2,7 @@
 
 # Laravel Console Mutex
 
-[<img src="https://user-images.githubusercontent.com/1286821/43083932-4915853a-8ea0-11e8-8983-db9e0f04e772.png" alt="Become a Patron" width="160" />](https://patreon.com/dmitryivanov)
+[<img src="https://user-images.githubusercontent.com/1286821/181085373-12eee197-187a-4438-90fe-571ac6d68900.png" alt="Buy me a coffee" width="200" />](https://buymeacoffee.com/dmitry.ivanov)
 
 [![StyleCI](https://github.styleci.io/repos/59570052/shield?branch=9.x&style=flat)](https://github.styleci.io/repos/59570052?branch=9.x)
 [![Build Status](https://img.shields.io/github/workflow/status/dmitry-ivanov/laravel-console-mutex/tests/9.x)](https://github.com/dmitry-ivanov/laravel-console-mutex/actions?query=workflow%3Atests+branch%3A9.x)
@@ -286,4 +286,5 @@ class ExampleCommand extends Command
 
 Laravel Console Mutex is open-sourced software licensed under the [MIT license](LICENSE.md).
 
-[<img src="https://user-images.githubusercontent.com/1286821/43086829-ff7c006e-8ea6-11e8-8b03-ecf97ca95b2e.png" alt="Support on Patreon" width="125" />](https://patreon.com/dmitryivanov)
+[<img src="https://user-images.githubusercontent.com/1286821/43086829-ff7c006e-8ea6-11e8-8b03-ecf97ca95b2e.png" alt="Support on Patreon" width="125" />](https://patreon.com/dmitryivanov)&nbsp;
+[<img src="https://user-images.githubusercontent.com/1286821/181085373-12eee197-187a-4438-90fe-571ac6d68900.png" alt="Buy me a coffee" width="200" />](https://buymeacoffee.com/dmitry.ivanov)&nbsp;

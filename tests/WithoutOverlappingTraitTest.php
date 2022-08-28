@@ -100,7 +100,8 @@ class WithoutOverlappingTraitTest extends TestCase
      */
     public function it_blocks_if_trying_to_run_another_instance_of_the_command()
     {
-        $this->willSeeException(MutexRuntimeException::class, 'Command is running now!');
+        $this->expectException(MutexRuntimeException::class);
+        $this->expectExceptionMessage('Command is running now!');
 
         $mutex = mock('overload:Illuminated\Console\Mutex');
         $mutex->expects('acquireLock')->with(0)->andReturn(false);

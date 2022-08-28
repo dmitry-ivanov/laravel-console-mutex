@@ -14,13 +14,6 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     use TestingTools;
 
     /**
-     * Indicates if the console output should be mocked.
-     *
-     * @var bool
-     */
-    public $mockConsoleOutput = false;
-
-    /**
      * Resolve application Console Kernel implementation.
      *
      * @param \Illuminate\Foundation\Application $app
