@@ -12,20 +12,19 @@
         "email": "dmitry.g.ivanov@gmail.com"
     }],
     "require": {
-        "php": "^8.0.2",
+        "php": "^8.1",
         "arvenil/ninja-mutex": "dev-master#82cbb2c",
-        "illuminate/console": "^9.0",
-        "illuminate/support": "^9.0",
-        "ramsey/collection": "^1.2"
+        "illuminate/console": "^10.0",
+        "illuminate/support": "^10.0"
     },
     "require-dev": {
         "ext-redis": "*",
         "ext-pdo_mysql": "*",
-        "phpunit/phpunit": "^9.5.10",
-        "mockery/mockery": "^1.4.4",
-        "orchestra/testbench": "^7.0",
-        "illuminated/testing-tools": "^9.0",
-        "predis/predis": "^1.1.9"
+        "phpunit/phpunit": "^10.5",
+        "mockery/mockery": "^1.5.1",
+        "orchestra/testbench": "^8.0",
+        "illuminated/testing-tools": "^10.0",
+        "predis/predis": "^2.0.2"
     },
     "autoload": {
         "psr-4": {
