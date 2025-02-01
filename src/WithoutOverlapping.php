@@ -90,7 +90,7 @@ trait WithoutOverlapping
         $name = $this->getName();
         $argumentsHash = md5(json_encode($this->argument()));
 
-        return "icmutex-{$name}-{$argumentsHash}";
+        return substr("icmutex-{$argumentsHash}-{$name}", 0, 64);
     }
 
     /**
