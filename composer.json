@@ -14,8 +14,8 @@
     "require": {
         "php": "^8.1",
         "arvenil/ninja-mutex": "dev-master#82cbb2c",
-        "illuminate/console": "^10|^11",
-        "illuminate/support": "^10|^11"
+        "illuminate/console": "^10|^11|^12",
+        "illuminate/support": "^10|^11|^12"
     },
     "require-dev": {
         "ext-redis": "*",
@@ -23,7 +23,7 @@
         "phpunit/phpunit": "^10.5|^11",
         "mockery/mockery": "^1.5.1",
         "orchestra/testbench": "^8.0",
-        "illuminated/testing-tools": "^10|^11",
+        "illuminated/testing-tools": "^10|^11|^12",
         "predis/predis": "^2.0.2"
     },
     "autoload": {
