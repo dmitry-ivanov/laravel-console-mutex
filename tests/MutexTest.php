@@ -13,6 +13,9 @@ use NinjaMutex\Lock\MemcachedLock;
 use NinjaMutex\Lock\MySQLPDOLock;
 use NinjaMutex\Lock\PhpRedisLock;
 use NinjaMutex\Lock\PredisRedisLock;
+use PHPUnit\Framework\Attributes\PreserveGlobalState;
+use PHPUnit\Framework\Attributes\RunInSeparateProcess;
+use PHPUnit\Framework\Attributes\Test;
 use Predis\Client as PredisClient;
 use Redis;
 
@@ -35,22 +38,22 @@ class MutexTest extends TestCase
         $this->command->expects('argument')->andReturn(['foo' => 'bar']);
     }
 
-    /** @test */
-    public function it_requires_command_as_constructor_parameter()
+    #[Test]
+    public function it_requires_command_as_constructor_parameter(): void
     {
         $mutex = new Mutex($this->command);
         $this->assertInstanceOf(Mutex::class, $mutex);
     }
 
-    /** @test */
-    public function it_determines_ninja_mutex_lock_once_while_creation()
+    #[Test]
+    public function it_determines_ninja_mutex_lock_once_while_creation(): void
     {
         $mutex = new Mutex($this->command);
         $this->assertSame($mutex->getNinjaMutexLock(), $mutex->getNinjaMutexLock());
     }
 
-    /** @test */
-    public function it_has_default_strategy_which_is_file()
+    #[Test]
+    public function it_has_default_strategy_which_is_file(): void
     {
         $this->command->expects('getMutexStrategy')->andReturn('foobar');
 
@@ -59,8 +62,8 @@ class MutexTest extends TestCase
         $this->assertEquals($expectedLock, $mutex->getNinjaMutexLock());
     }
 
-    /** @test */
-    public function it_supports_mysql_strategy()
+    #[Test]
+    public function it_supports_mysql_strategy(): void
     {
         $this->command->expects('getMutexStrategy')->andReturn('mysql');
 
@@ -77,8 +80,8 @@ class MutexTest extends TestCase
         $this->assertEquals($expectedLock, $mutex->getNinjaMutexLock());
     }
 
-    /** @test */
-    public function it_supports_redis_strategy_with_phpredis_client_which_is_default()
+    #[Test]
+    public function it_supports_redis_strategy_with_phpredis_client_which_is_default(): void
     {
         $this->command->expects('getMutexStrategy')->andReturn('redis');
 
@@ -90,8 +93,8 @@ class MutexTest extends TestCase
         $this->assertEquals($expectedLock, $mutex->getNinjaMutexLock());
     }
 
-    /** @test */
-    public function it_supports_redis_strategy_with_predis_client()
+    #[Test]
+    public function it_supports_redis_strategy_with_predis_client(): void
     {
         config(['database.redis.client' => 'predis']);
 
@@ -105,8 +108,8 @@ class MutexTest extends TestCase
         $this->assertEquals($expectedLock, $mutex->getNinjaMutexLock());
     }
 
-    /** @test */
-    public function it_supports_memcached_strategy()
+    #[Test]
+    public function it_supports_memcached_strategy(): void
     {
         Cache::shouldReceive('getStore')->withNoArgs()->twice()->andReturnSelf();
         Cache::shouldReceive('getMemcached')->withNoArgs()->twice()->andReturnSelf();
@@ -118,12 +121,8 @@ class MutexTest extends TestCase
         $this->assertEquals($expectedLock, $mutex->getNinjaMutexLock());
     }
 
-    /**
-     * @test
-     * @runInSeparateProcess
-     * @preserveGlobalState disabled
-     */
-    public function it_delegates_public_method_calls_to_ninja_mutex()
+    #[Test] #[RunInSeparateProcess] #[PreserveGlobalState(false)]
+    public function it_delegates_public_method_calls_to_ninja_mutex(): void
     {
         $ninja = mock('overload:NinjaMutex\Mutex');
         $ninja->expects('isLocked');
