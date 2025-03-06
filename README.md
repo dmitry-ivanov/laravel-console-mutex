@@ -4,9 +4,9 @@
 
 [<img src="https://user-images.githubusercontent.com/1286821/181085373-12eee197-187a-4438-90fe-571ac6d68900.png" alt="Buy me a coffee" width="200" />](https://buymeacoffee.com/dmitry.ivanov)
 
-[![StyleCI](https://github.styleci.io/repos/59570052/shield?branch=master&style=flat)](https://github.styleci.io/repos/59570052?branch=master)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/dmitry-ivanov/laravel-console-mutex/tests.yml?branch=master)](https://github.com/dmitry-ivanov/laravel-console-mutex/actions?query=workflow%3Atests+branch%3Amaster)
-[![Coverage Status](https://img.shields.io/codecov/c/github/dmitry-ivanov/laravel-console-mutex/master)](https://app.codecov.io/gh/dmitry-ivanov/laravel-console-mutex/tree/master)
+[![StyleCI](https://github.styleci.io/repos/59570052/shield?branch=12.x&style=flat)](https://github.styleci.io/repos/59570052?branch=12.x)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/dmitry-ivanov/laravel-console-mutex/tests.yml?branch=12.x)](https://github.com/dmitry-ivanov/laravel-console-mutex/actions?query=workflow%3Atests+branch%3A12.x)
+[![Coverage Status](https://img.shields.io/codecov/c/github/dmitry-ivanov/laravel-console-mutex/12.x)](https://app.codecov.io/gh/dmitry-ivanov/laravel-console-mutex/tree/12.x)
 
 ![Packagist Version](https://img.shields.io/packagist/v/illuminated/console-mutex)
 ![Packagist Stars](https://img.shields.io/packagist/stars/illuminated/console-mutex)
@@ -54,7 +54,7 @@ Mutex for Laravel Console Commands.
 1. Install the package via Composer:
 
     ```shell script
-    composer require illuminated/console-mutex
+    composer require "illuminated/console-mutex:^12.0"
     ```
 
 2. Use `Illuminated\Console\WithoutOverlapping` trait:
