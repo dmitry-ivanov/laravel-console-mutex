@@ -62,7 +62,7 @@ trait WithoutOverlapping
      * `{milliseconds}` - check, and wait for a maximum of milliseconds specified;
      * `null` - wait, till running command finish its execution;
      */
-    public function getMutexTimeout(): int|null
+    public function getMutexTimeout(): ?int
     {
         return property_exists($this, 'mutexTimeout')
             ? $this->mutexTimeout
@@ -77,7 +77,7 @@ trait WithoutOverlapping
      * `{milliseconds}` - check, and wait for a maximum of milliseconds specified;
      * `null` - wait, till running command finish its execution;
      */
-    public function setMutexTimeout(int|null $timeout): void
+    public function setMutexTimeout(?int $timeout): void
     {
         $this->mutexTimeout = $timeout;
     }
