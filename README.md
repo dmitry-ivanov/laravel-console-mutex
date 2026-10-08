@@ -46,7 +46,6 @@ Mutex for Laravel Console Commands.
 - [Troubleshooting](#troubleshooting)
   - [Trait included, but nothing happens?](#trait-included-but-nothing-happens)
   - [Several traits conflict?](#several-traits-conflict)
-- [Sponsors](#sponsors)
 - [License](#license)
 
 ## Usage
@@ -279,11 +278,6 @@ class ExampleCommand extends Command
     // ...
 }
 ```
-
-## Sponsors
-
-[![Laravel Idea](art/sponsor-laravel-idea.png)](https://laravel-idea.com)<br>
-[![Material Theme UI Plugin](art/sponsor-material-theme.png)](https://material-theme.com)<br>
 
 ## License
 
